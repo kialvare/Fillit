@@ -50,6 +50,7 @@ int		smallest_square(int n)
 		square = i * i;
 		if (n < square)
 			return (i * 2);
+			// return (i);
 		i++;
 	}
 	return (square);
@@ -98,6 +99,5 @@ t_map		*make_map(int n)
 		}
 		i++;
 	}
-	print_map(map);
 	return (map);
 }

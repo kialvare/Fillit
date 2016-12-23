@@ -115,9 +115,9 @@ t_list	*store_tetri(char *raw_map)
 		}
 		return (list);
 	}
-	else
+	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
 		return (put_error());
-
+	return(0);
 }
 
 // t_list	*store_tetri(char *raw_map)
