@@ -124,11 +124,11 @@ t_map	*get_a_piece(t_list *piece)
 	char *all_pieces;
 	// char **the_piece;
 	// int i;
-	int count;
+	// int count;
 
 	size = smallest_square(ft_lstcount(piece) * 4);
 	// size1 = ft_lstcount(piece);
-	count = piece->content_size;
+	// count = piece->content_size;
 	// ft_putnbr(count);
 	ft_putnbr(size);
 	ft_putchar('\n');
