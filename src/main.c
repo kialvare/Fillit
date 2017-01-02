@@ -17,7 +17,7 @@ int		main(int ac, char **av)
 	int			fd;
 	char		*str;
 	t_list		*pieces;
-	t_map		*map;
+	// t_map		*map;
 
 	if (ac == 2)
 	{
@@ -29,7 +29,7 @@ int		main(int ac, char **av)
 		}
 		str = read_file(fd);
 		pieces = store_tetri(str);
-		map = get_a_piece(pieces);
+		// map = get_a_piece(pieces);
 		// print_map(map);
 		// free_map(map);
 		// free_list(pieces);

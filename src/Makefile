@@ -26,12 +26,10 @@ LDLIBS=-lft
 
 SRC=main.c \
 	read_map.c \
-	check_shape.c \
 	algo3.c \
 	convert.c \
 	map.c \
-	count_tetri.c \
-	check_tetri.c
+	count_tetri.c 
 
 all: $(NAME)
 

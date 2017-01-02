@@ -20,24 +20,6 @@
 
 
 
-/* ********************* VALIDATION ********************** */
-
-typedef struct 			s_init 
-{
-	int					ipiece;
-	int					hash;
-	int					dot;
-	int					endline;
-}						t_init;
-
-typedef struct 			s_init2
-{
-	int 				count;
-	int 				line_5;
-	int 				lines;
-	int 				i;
-}						t_init2;
-
 
 /* ********************** MAP ************************** */
 
@@ -82,17 +64,6 @@ t_map 					*start(char **piece, int num);
 t_map 					*get_a_piece(t_list *piece);
 int						place_piece(t_piece *piece, t_map *map, int x, int y);
 
-
-/* ********************* check_shape.c ******************** */
-
-int						check_connection(char **str);
-t_piece 				*get_piece(char *str, char value);
-
-/* ********************* check_tetri.c ******************** */
-
-int						check_all_char(char *str);
-int						check_charperline(char *str);
-
 /* ************************* map.c ************************ */
 
 int						free_map(t_map *map);
@@ -104,21 +75,8 @@ t_map					*make_map(int n);
 
 char					*read_file(int fd);
 t_list					*store_tetri(char *raw_map);
-t_list *put_error(void);
+t_list 					*put_error(void);
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);
-
-
-
-/* ************* Haven't been categorized yet ************** */
-
-int						check_place(char *str);
-int						ft_check(char **tab);
-t_list					*check_valid(int fd);
-int 					check_new_lines_at_end(char *str);
-void					init(t_init *all_char, t_init2 *charperline);
-// void    				init_struct(t_check *tmp);
-// void    				check_character(char c, t_check *tmp);
-void					increment_counter(char c, int *dot, int *hash, int *endline);
 
 #endif

@@ -22,21 +22,21 @@ int	tetri_valid(char *s, int i)
 	int	j;
 	int	limit;
 	int	k;
-	int	hash;
+	int	hashes;
 	int ans;
 
 	ans = 0;
-	hash = 0;
+	hashes = 0;
 	j = (i * 21);
 	limit = (j + 21);
 	k = j;
 	while (s[k] && k < limit)
 	{
 		if(s[k] == '#')
-			hash++;
+			hashes++;
 		k++;
 	}
-	if ((hash % 4) != 0)
+	if ((hashes % 4) != 0)
 		return (0);
 	while (j < limit)
 	{
