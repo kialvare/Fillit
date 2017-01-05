@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phoreau <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/28 17:00:51 by phoreau           #+#    #+#             */
-/*   Updated: 2016/11/27 18:57:31 by kialvare         ###   ########.fr       */
+/*   Created: 2017/01/05 09:26:23 by kialvare          #+#    #+#             */
+/*   Updated: 2017/01/05 09:26:30 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,37 +60,86 @@
 // 	ft_memdel((void **)&piece);
 // }
 
-t_list *read_file(int fd)
-{
-	char *buf;
-	int n;
-	t_list *list;
+// t_list *read_file(int fd, char *raw_map)
+// {
+// 	char *buf;
+// 	int n;
+// 	t_list *list;
 
-	buf = ft_strnew(21);
-	list = NULL;
-	while ((count = read(fd, buf, 21)) >= 20)
+// 	buf = ft_strnew(21);
+// 	list = NULL;
+// 	while ((count = read(fd, buf, 21)) >= 20)
+// 	{
+// 		if ((tetri_valid(raw_map, count_tetri(raw_map))))
+// 		{
+// 			ft_memdel((void **)&buf);
+// 			return (free_list(list));
+// 		}
+// 		ft_lstadd()
+// 	}
+// }
+
+char **split_at_newline(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if ((tetri_valid()))
+		if (str[i] == '\n')
+		{
+			if (str[i++] == '\n')
+			{
+				
+			}
+		}
 	}
 }
 
-// char	*read_file(int fd)
-// {
-// 	char	*buf;
-// 	int		ret;
+char	*read_file(int fd)
+{
+	char	*buf;
+	int		ret;
 
-// 	buf = (char *)ft_memalloc(sizeof(buf) * 546);
-// 	while ((ret = read(fd, buf, 546)))
-// 	{
-// 		buf[ret] = '\0';
-// 	}
-//     return (buf);
-// }
+	buf = (char *)ft_memalloc(sizeof(buf) * 546);
+	while ((ret = read(fd, buf, 546)))
+	{
+		buf[ret] = '\0';
+	}
+    return (buf);
+}
 
 t_list	*put_error(void)
 {
 	ft_putendl("error");
 	return (0);
+}
+
+t_list	*store_tetri_two(t_list *first_link, char **str, int line)
+{
+	ft_strcat(first_link->content, str[line++]);
+	ft_strcat(first_link->content, str[line++]);
+	ft_strcat(first_link->content, str[line++]);
+	return (0);
+}
+
+t_list	*store_tetri(char *raw_map)
+{
+	char	**str;
+	int		line;
+	t_list	*first_link;
+	t_list	*next_link;
+	t_list *list;
+
+	line = 0;
+	if (tetri_valid(raw_map, count_tetri(raw_map)))
+	{
+		str = split_at_newline(raw_map);
+
+	}
+	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
+		return (put_error());
+	return(0);
 }
 
 // t_list	*store_tetri_two(t_list *first_link, char **str, int line)
@@ -122,7 +171,7 @@ t_list	*put_error(void)
 // 			next_link = ft_lstnew(str[line++], 17);
 // 			store_tetri_two(next_link, str, line);
 // 			line += 3;
-// 			ft_lstaddtotheend(&first_link, next_link);
+// 			ft_lstadd(&first_link, next_link);
 // 			while (first_link)
 // 			{
 // 				printf("%s\n", first_link->content);
