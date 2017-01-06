@@ -60,24 +60,24 @@
 // 	ft_memdel((void **)&piece);
 // }
 
-// t_list *read_file(int fd, char *raw_map)
-// {
-// 	char *buf;
-// 	int n;
-// 	t_list *list;
+t_list *read_file(int fd, char *raw_map)
+{
+	char *buf;
+	int n;
+	t_list *list;
 
-// 	buf = ft_strnew(21);
-// 	list = NULL;
-// 	while ((count = read(fd, buf, 21)) >= 20)
-// 	{
-// 		if ((tetri_valid(raw_map, count_tetri(raw_map))))
-// 		{
-// 			ft_memdel((void **)&buf);
-// 			return (free_list(list));
-// 		}
-// 		ft_lstadd()
-// 	}
-// }
+	buf = ft_strnew(21);
+	list = NULL;
+	while ((count = read(fd, buf, 21)) >= 20)
+	{
+		if ((tetri_valid(raw_map, count_tetri(raw_map))))
+		{
+			ft_memdel((void **)&buf);
+			return (free_list(list));
+		}
+		ft_lstadd()
+	}
+}
 
 char **split_at_newline(char *str)
 {
@@ -115,33 +115,6 @@ t_list	*put_error(void)
 	return (0);
 }
 
-t_list	*store_tetri_two(t_list *first_link, char **str, int line)
-{
-	ft_strcat(first_link->content, str[line++]);
-	ft_strcat(first_link->content, str[line++]);
-	ft_strcat(first_link->content, str[line++]);
-	return (0);
-}
-
-t_list	*store_tetri(char *raw_map)
-{
-	char	**str;
-	int		line;
-	t_list	*first_link;
-	t_list	*next_link;
-	t_list *list;
-
-	line = 0;
-	if (tetri_valid(raw_map, count_tetri(raw_map)))
-	{
-		str = split_at_newline(raw_map);
-
-	}
-	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
-		return (put_error());
-	return(0);
-}
-
 // t_list	*store_tetri_two(t_list *first_link, char **str, int line)
 // {
 // 	ft_strcat(first_link->content, str[line++]);
@@ -161,29 +134,56 @@ t_list	*store_tetri(char *raw_map)
 // 	line = 0;
 // 	if (tetri_valid(raw_map, count_tetri(raw_map)))
 // 	{
-// 		str = ft_strsplit(raw_map, '\n');
-// 		first_link = ft_lstnew(str[line++], 17);
-// 		store_tetri_two(first_link, str, line);
-// 		line += 3;
-// 		list = first_link;
-// 		while (str[line])
-// 		{
-// 			next_link = ft_lstnew(str[line++], 17);
-// 			store_tetri_two(next_link, str, line);
-// 			line += 3;
-// 			ft_lstadd(&first_link, next_link);
-// 			while (first_link)
-// 			{
-// 				printf("%s\n", first_link->content);
-// 				first_link = first_link->next;
-// 			}
-// 		}
-// 		return (list);
+// 		str = split_at_newline(raw_map);
+
 // 	}
 // 	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
 // 		return (put_error());
 // 	return(0);
 // }
+
+t_list	*store_tetri_two(t_list *first_link, char **str, int line)
+{
+	ft_strcat(first_link->content, str[line++]);
+	ft_strcat(first_link->content, str[line++]);
+	ft_strcat(first_link->content, str[line++]);
+	return (0);
+}
+
+t_list	*store_tetri(char *raw_map)
+{
+	char	**str;
+	int		line;
+	t_list	*first_link;
+	t_list	*next_link;
+	t_list *list;
+
+	line = 0;
+	if (tetri_valid(raw_map, count_tetri(raw_map)))
+	{
+		str = ft_strsplit(raw_map, '\n');
+		first_link = ft_lstnew(str[line++], 17);
+		store_tetri_two(first_link, str, line);
+		line += 3;
+		list = first_link;
+		while (str[line])
+		{
+			next_link = ft_lstnew(str[line++], 17);
+			store_tetri_two(next_link, str, line);
+			line += 3;
+			ft_lstadd(&first_link, next_link);
+			while (first_link)
+			{
+				printf("%s\n", first_link->content);
+				first_link = first_link->next;
+			}
+		}
+		return (list);
+	}
+	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
+		return (put_error());
+	return(0);
+}
 
 // t_list	*store_tetri(char *raw_map)
 // {
