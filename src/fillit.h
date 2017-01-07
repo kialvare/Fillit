@@ -73,10 +73,13 @@ t_map					*make_map(int n);
 
 /* ********************** read_map.c ********************** */
 
-char					*read_file(int fd);
+// char					*read_file(int fd);
+char 					*read_file(char *file);
 t_list					*store_tetri(char *raw_map);
 t_list 					*put_error(void);
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);
+
+char			**ft_strsplitstr(char const *s, char *delim);
 
 #endif

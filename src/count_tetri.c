@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include "fillit.h"
+
 int	count_tetri(char *s)
 {
 	int i;
@@ -17,7 +20,8 @@ int	count_tetri(char *s)
 	i = 0;
 	while(s[i])
 	{
-		if((((i = 20) == 0 && i <= 20) || (i + 1 % 21 == 0 && i > 21)) && s[i] != '\n')
+		if((((i % 20) == 0 && i <= 20) || (i + 1 % 21 == 0 && i > 21)) 
+		 && s[i] != '\n')
 			return (0);
 		i++;
 	}
@@ -44,6 +48,7 @@ int	tetri_valid(char *s, int i)
 	k = j;
 	while (s[k] && k < limit)
 	{
+		printf("%c\n", s[k]);
 		if(s[k] == '#')
 			hashes++;
 		k++;
