@@ -56,6 +56,7 @@ char 					**convert(char *str);
 /* ********************* count_tetri.c ******************** */
 int						count_tetri(char *s);
 int						tetri_valid(char *s, int i);
+int ft_valid(char *s);
 
 /* ********************* algo3.c ******************** */
 int						test_map(t_map *map, char **piece, int i, int j);

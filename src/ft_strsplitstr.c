@@ -63,7 +63,6 @@ char			**ft_strsplitstr(char const *s, char *delim)
 		return (NULL);
 	while (++j < sholder)
 	{
-		// printf("%s , %c, %s\n", s, s[i], delim);
 		// Skip over delimiters in the string
 		while (s[i] && ft_startswith(s + i, delim))
 			i += ft_strlen(delim);
