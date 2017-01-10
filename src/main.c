@@ -21,6 +21,12 @@ int		main(int ac, char **av)
 
 	if (ac == 2)
 	{
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
+		{
+			ft_putendl("usage: ./fillit target_file");
+			return (-1);
+		}
 		file = read_file(av[1]);
 		pieces = store_tetri(file);
 		// map = get_a_piece(pieces);
