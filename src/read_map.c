@@ -130,6 +130,9 @@ t_list	*store_tetri(char *raw_map)
 	else if (ft_valid(raw_map) == 1)
 		return (put_error());
 	return(0);
+<<<<<<< HEAD
+}
+=======
 }
 
 // t_list	*store_tetri_two(t_list *first_link, char **str, int line)
@@ -189,3 +192,4 @@ t_list	*store_tetri(char *raw_map)
 // 	}
 // 	return (0);
 // }
+>>>>>>> f9c1d0e176d600f625e75bcc3a5c14104deb5155
