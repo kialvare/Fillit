@@ -20,4 +20,30 @@ char pieces[19][20] = {
 	{".#..##..#......."}
 }
 
-square piece = {str[0], str[1], str[4], str[5]};
+ft_strsplitstr: look through for two new lines one right after the other and 
+
+#...\n
+#...\n
+#...\n
+#...\n
+\n
+.##.\n
+##..\n
+....\n
+....\n
+
+First split at double newline
+0:	#...\n
+	#...\n
+	#...\n
+	#...
+1:  .##.\n
+	##..\n
+	....\n
+	....
+
+Second split at single newline
+0: #...
+1: #...
+2: #...
+3: #...

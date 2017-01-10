@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phoreau <marvin@42.fr>                     +#+  +:+       +#+        */           
+/*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/28 14:23:29 by phoreau           #+#    #+#             */
-/*   Updated: 2016/11/27 20:02:31 by kialvare         ###   ########.fr       */
+/*   Created: 2017/01/05 09:25:41 by kialvare          #+#    #+#             */
+/*   Updated: 2017/01/05 09:25:50 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		main(int ac, char **av)
 {
-	int			fd;
-	char		*str;
+	char *file;
+	// char		*str;
 	t_list		*pieces;
-	t_map		*map;
+	// t_map		*map;
 
 	if (ac == 2)
 	{
@@ -27,9 +27,9 @@ int		main(int ac, char **av)
 			ft_putendl("usage: ./fillit target_file");
 			return (-1);
 		}
-		str = read_file(fd);
-		pieces = store_tetri(str);
-		map = get_a_piece(pieces);
+		file = read_file(av[1]);
+		pieces = store_tetri(file);
+		// map = get_a_piece(pieces);
 		// print_map(map);
 		// free_map(map);
 		// free_list(pieces);
