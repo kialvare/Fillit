@@ -93,14 +93,18 @@ t_list	*put_error(void)
 t_list	*store_tetri(char *raw_map)
 {
 	char	**str;
+	//t_piece	string;
 	int i;
-	// t_list	*first_link;
+	//int j;
+	//int k;
+	// int len;
 	// t_list	*next_link;
 	// t_list *list;
 
 	// line = 0;
+	// len = ft_arrlen(ft_strsplitstr(raw_map, "\n\n"));
 	i = 0;
-	if ((ft_valid(raw_map) == 0))
+	if (ft_valid(raw_map) != 1)
 	{
 		str = ft_strsplitstr(raw_map, "\n\n");
 		while (str[i] != '\0')
@@ -108,8 +112,22 @@ t_list	*store_tetri(char *raw_map)
 			printf("%d: %s\n", i, str[i]);
 			i++;
 		}
+		// str = ft_strsplitstr(raw_map, "\n");
+		// while (i < len)
+		// {
+		// 	j = 0;
+		// 	k = 0;
+		// 	while (j < 4)
+		// 	{
+		// 		string.str[k] = &str[i][j];
+		// 		// printf("%d: %s\n", k, string.str[k]);
+		// 		j++;
+		// 		k++;
+		// 	}
+		// 	i++;
+		// }
 	}
-	else if ((ft_valid(raw_map) == 1))
+	else if (ft_valid(raw_map) == 1)
 		return (put_error());
 	return(0);
 }

@@ -37,7 +37,7 @@ int	tetri_valid(char *s, int i)
 {
 	int	j;
 	int	limit;
-	int	k; 
+	int	k;
 	int	hashes;
 	int ans;
 
