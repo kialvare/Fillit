@@ -28,6 +28,32 @@ int		main(int ac, char **av)
 			return (-1);
 		}
 		str = read_file(fd);
+
+		pieces = ft_strsplitstr(str, "\n\n");
+		[
+			"#...\n#...\n#...\n#...",
+			"#...\n#...\n#...\n#...",
+			"#...\n#...\n#...\n#...",
+			"#...\n#...\n#...\n#...",
+			"#...\n#...\n#...\n#...",
+		]
+
+		piece_rows = ft_strsplitstr("#...\n#...\n#...\n#...", "\n")
+		[
+			[
+				"#...",
+				"#...",
+				"#...",
+				"#...",
+			],
+			[
+				"#...",
+				"#...",
+				"#...",
+				"#...",
+			],
+		]
+
 		pieces = store_tetri(str);
 		// map = get_a_piece(pieces);
 		// print_map(map);
