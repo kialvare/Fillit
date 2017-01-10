@@ -18,17 +18,7 @@
 # include <sys/uio.h>
 # include <stdio.h> // ************************* remove it at the end!!!!!
 
-
-
-
 /* ********************** MAP ************************** */
-
-typedef struct			s_shape
-{
-	char				**content;
-	size_t				content_size;
-	struct s_shape		*next;
-}						t_shape;
 
 typedef struct 			s_map
 {
@@ -37,11 +27,6 @@ typedef struct 			s_map
 }						t_map;
 
 /* ********************* STORING ********************** */
-
-// typedef struct 		s_piece
-// {
-// 	char				*str;
-// }					t_piece;
 
 typedef struct 			s_piece
 {
@@ -56,6 +41,7 @@ char 					**convert(char *str);
 /* ********************* count_tetri.c ******************** */
 int						count_tetri(char *s);
 int						tetri_valid(char *s, int i);
+int ft_valid(char *s);
 
 /* ********************* algo3.c ******************** */
 int						test_map(t_map *map, char **piece, int i, int j);
@@ -73,10 +59,12 @@ t_map					*make_map(int n);
 
 /* ********************** read_map.c ********************** */
 
-char					*read_file(int fd);
+char 					*read_file(char *file);
 t_list					*store_tetri(char *raw_map);
 t_list 					*put_error(void);
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);
+
+char			**ft_strsplitstr(char const *s, char *delim);
 
 #endif

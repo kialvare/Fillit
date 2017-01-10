@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include "fillit.h"
+
 int	count_tetri(char *s)
 {
 	int i;
@@ -17,7 +20,8 @@ int	count_tetri(char *s)
 	i = 0;
 	while(s[i])
 	{
-		if(((i == 20 && i <= 20) || (i + 1 % 21 == 0 && i > 21)) && s[i] != '\n')
+		if((((i % 20) == 0 && i <= 20) || (i % 21 == 0 && i > 21)) 
+		 && s[i] != '\n')
 			return (0);
 		i++;
 	}
@@ -64,4 +68,20 @@ int	tetri_valid(char *s, int i)
 	if (ans >= 3)
 		return (1);
 	return (0);
+}
+
+int ft_valid(char *s)
+{
+	int n;
+
+	n = count_tetri(s);
+	if (n == 0)
+		return (0);
+	while (n > 0)
+	{
+		if (tetri_valid(s, n - 1) == 0)
+			return (0);
+		n--;
+	}
+	return (1);
 }

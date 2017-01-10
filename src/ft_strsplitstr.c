@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "fillit.h"
 
 static int		ft_startswith(const char *str, const char *delim)
 {
@@ -63,7 +63,6 @@ char			**ft_strsplitstr(char const *s, char *delim)
 		return (NULL);
 	while (++j < sholder)
 	{
-		// printf("%s , %c, %s\n", s, s[i], delim);
 		// Skip over delimiters in the string
 		while (s[i] && ft_startswith(s + i, delim))
 			i += ft_strlen(delim);
@@ -88,15 +87,7 @@ char			**ft_strsplitstr(char const *s, char *delim)
 // 	char **str2;
 // 	// int strn;
 // 	// char *str = "#...a#...aa#...aa";
-// 	char *str = "#...\n#...\n#...\n#...\n\n#...\n#...\n#...\n#...\n";
-
-// 	//printf("Starts with %d\n", ft_startswith(str, "b"));
-
-// 	// // printf("match %d\n", ft_startswith("a", "a"));
-// 	// // printf("match %d\n", ft_startswith("ab", "ab"));
-// 	// // printf("match %d\n", ft_startswith("abcab", "c"));
-// 	// // printf("match %d\n", ft_startswith("abcab", "abd"));
-// 	// // printf("match %d\n", ft_startswith("\n\ncab", "\n\n"));
+// 	char *str = "..##\n..##\n....\n....\n\n#...\n###.\n....\n....\n";
 
 // 	// strn = ft_wordcount(str, "...");
 // 	// printf("\n\nWords: %d.\n", strn);

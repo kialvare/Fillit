@@ -29,6 +29,8 @@ SRC=main.c \
 	algo3.c \
 	convert.c \
 	map.c \
+	ft_strsplitstr.c \
+	ft_arrlen.c \
 	count_tetri.c 
 
 all: $(NAME)

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "libft/libft.h"
 
 // t_shape	*free_list(t_shape *list)
 // {
@@ -60,59 +61,75 @@
 // 	ft_memdel((void **)&piece);
 // }
 
-t_list *read_file(int fd, char *raw_map)
+char *read_file(char *file)
 {
-	char *buf;
-	int n;
-	t_list *list;
-
-	buf = ft_strnew(21);
-	list = NULL;
-	while ((count = read(fd, buf, 21)) >= 20)
-	{
-		if ((tetri_valid(raw_map, count_tetri(raw_map))))
-		{
-			ft_memdel((void **)&buf);
-			return (free_list(list));
-		}
-		ft_lstadd()
-	}
-}
-
-char **split_at_newline(char *str)
-{
+	int fd;
+	int ret;
 	int i;
+	char tmp[545];
+	char buf[1];
 
 	i = 0;
-	while (str[i] != '\0')
+	if ((fd = open(file, O_RDONLY)) == -1)
+		put_error();
+	while((ret = read(fd, buf, 1)))
 	{
-		if (str[i] == '\n')
-		{
-			if (str[i++] == '\n')
-			{
-				
-			}
-		}
+		tmp[i++] = buf[0];
+		if (i > 545)
+			put_error();
 	}
-}
-
-char	*read_file(int fd)
-{
-	char	*buf;
-	int		ret;
-
-	buf = (char *)ft_memalloc(sizeof(buf) * 546);
-	while ((ret = read(fd, buf, 546)))
-	{
-		buf[ret] = '\0';
-	}
-    return (buf);
+	tmp[i] = '\0';
+	if (close(fd) == -1)
+		put_error();
+	return(ft_strdup(tmp));
 }
 
 t_list	*put_error(void)
 {
 	ft_putendl("error");
 	return (0);
+}
+
+t_list	*store_tetri(char *raw_map)
+{
+	char	**str;
+	//t_piece	string;
+	int i;
+	//int j;
+	//int k;
+	// int len;
+	// t_list	*next_link;
+	// t_list *list;
+
+	// line = 0;
+	// len = ft_arrlen(ft_strsplitstr(raw_map, "\n\n"));
+	i = 0;
+	if (ft_valid(raw_map) != 1)
+	{
+		str = ft_strsplitstr(raw_map, "\n\n");
+		while (str[i] != '\0')
+		{
+			printf("%d: %s\n", i, str[i]);
+			i++;
+		}
+		// str = ft_strsplitstr(raw_map, "\n");
+		// while (i < len)
+		// {
+		// 	j = 0;
+		// 	k = 0;
+		// 	while (j < 4)
+		// 	{
+		// 		string.str[k] = &str[i][j];
+		// 		// printf("%d: %s\n", k, string.str[k]);
+		// 		j++;
+		// 		k++;
+		// 	}
+		// 	i++;
+		// }
+	}
+	else if (ft_valid(raw_map) == 1)
+		return (put_error());
+	return(0);
 }
 
 // t_list	*store_tetri_two(t_list *first_link, char **str, int line)
@@ -134,69 +151,41 @@ t_list	*put_error(void)
 // 	line = 0;
 // 	if (tetri_valid(raw_map, count_tetri(raw_map)))
 // 	{
-// 		str = split_at_newline(raw_map);
-
+// 		str = ft_strsplit(raw_map, '\n');
+// 		first_link = ft_lstnew(str[line++], 17);
+// 		store_tetri_two(first_link, str, line);
+// 		line += 3;
+// 		list = first_link;
+// 		while (str[line])
+// 		{
+// 			next_link = ft_lstnew(str[line++], 17);
+// 			store_tetri_two(next_link, str, line);
+// 			line += 3;
+// 			ft_lstadd(&first_link, next_link);
+// 			while (first_link)
+// 			{
+// 				printf("%s\n", first_link->content);
+// 				first_link = first_link->next;
+// 			}
+// 		}
+// 		return (list);
 // 	}
 // 	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
 // 		return (put_error());
 // 	return(0);
 // }
 
-t_list	*store_tetri_two(t_list *first_link, char **str, int line)
-{
-	ft_strcat(first_link->content, str[line++]);
-	ft_strcat(first_link->content, str[line++]);
-	ft_strcat(first_link->content, str[line++]);
-	return (0);
-}
-
-t_list	*store_tetri(char *raw_map)
-{
-	char	**str;
-	int		line;
-	t_list	*first_link;
-	t_list	*next_link;
-	t_list *list;
-
-	line = 0;
-	if (tetri_valid(raw_map, count_tetri(raw_map)))
-	{
-		str = ft_strsplit(raw_map, '\n');
-		first_link = ft_lstnew(str[line++], 17);
-		store_tetri_two(first_link, str, line);
-		line += 3;
-		list = first_link;
-		while (str[line])
-		{
-			next_link = ft_lstnew(str[line++], 17);
-			store_tetri_two(next_link, str, line);
-			line += 3;
-			ft_lstadd(&first_link, next_link);
-			while (first_link)
-			{
-				printf("%s\n", first_link->content);
-				first_link = first_link->next;
-			}
-		}
-		return (list);
-	}
-	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
-		return (put_error());
-	return(0);
-}
-
 // t_list	*store_tetri(char *raw_map)
 // {
-// 	// if (!(check_charperline(raw_map) && check_all_char(raw_map)\
-// 	// 		&& check_new_lines_at_end(raw_map)))
-// 	// if (!(check_charperline(raw_map)))
-// 	// if (!(check_all_char(raw_map)))
-// 	// if (!(check_new_lines_at_end(raw_map)))
 // 	if (!(tetri_valid(raw_map, count_tetri(raw_map))))
 // 	{
-// 		printf("it doesn't work\n");
+// 		put_error();
 // 	}
 // 	else
+// 	{
+// 		ft_strlen(raw_map);
+// 		// printf("%d\n", count_tetri(raw_map));
 // 		printf("it works but why\n");
+// 	}
 // 	return (0);
 // }

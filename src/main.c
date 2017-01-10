@@ -14,8 +14,8 @@
 
 int		main(int ac, char **av)
 {
-	int			fd;
-	char		*str;
+	char *file;
+	// char		*str;
 	t_list		*pieces;
 	// t_map		*map;
 
@@ -27,34 +27,8 @@ int		main(int ac, char **av)
 			ft_putendl("usage: ./fillit target_file");
 			return (-1);
 		}
-		str = read_file(fd);
-
-		pieces = ft_strsplitstr(str, "\n\n");
-		[
-			"#...\n#...\n#...\n#...",
-			"#...\n#...\n#...\n#...",
-			"#...\n#...\n#...\n#...",
-			"#...\n#...\n#...\n#...",
-			"#...\n#...\n#...\n#...",
-		]
-
-		piece_rows = ft_strsplitstr("#...\n#...\n#...\n#...", "\n")
-		[
-			[
-				"#...",
-				"#...",
-				"#...",
-				"#...",
-			],
-			[
-				"#...",
-				"#...",
-				"#...",
-				"#...",
-			],
-		]
-
-		pieces = store_tetri(str);
+		file = read_file(av[1]);
+		pieces = store_tetri(file);
 		// map = get_a_piece(pieces);
 		// print_map(map);
 		// free_map(map);
