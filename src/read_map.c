@@ -119,19 +119,3 @@ t_list	*store_tetri(char *raw_map)
 		return (put_error());
 	return(0);
 }
-
-// t_list	*store_tetri(char *raw_map)
-// {
-// 	// if (!(check_charperline(raw_map) && check_all_char(raw_map)\
-// 	// 		&& check_new_lines_at_end(raw_map)))
-// 	// if (!(check_charperline(raw_map)))
-// 	// if (!(check_all_char(raw_map)))
-// 	// if (!(check_new_lines_at_end(raw_map)))
-// 	if (!(tetri_valid(raw_map, count_tetri(raw_map))))
-// 	{
-// 		printf("it doesn't work\n");
-// 	}
-// 	else
-// 		printf("it works but why\n");
-// 	return (0);
-// }
