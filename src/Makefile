@@ -29,9 +29,13 @@ SRC=main.c \
 	algo3.c \
 	convert.c \
 	map.c \
+<<<<<<< HEAD
+	count_tetri.c
+=======
 	ft_strsplitstr.c \
 	ft_arrlen.c \
 	count_tetri.c 
+>>>>>>> f9c1d0e176d600f625e75bcc3a5c14104deb5155
 
 all: $(NAME)
 
