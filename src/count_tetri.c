@@ -13,23 +13,62 @@
 #include <stdio.h>
 #include "fillit.h"
 
-int	count_tetri(char *s)
+// int	count_tetri(char *s)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while(s[i])
+// 	{
+// 		if((((i % 20) == 0 && i <= 20) || (i % 21 == 0 && i > 21)) 
+// 		 && s[i] != '\n')
+// 			return (0);
+// 		i++;
+// 	}
+// 	if (i > 20)
+// 		if ((i - 20) % 21 == 0 && (i / 21) <= 26)
+// 			return ((i + 1) / 21);
+// 	if (i == 20)
+// 		return (1);
+// 	return (0);
+// }
+
+int	check_count(char *s)
 {
 	int i;
 
 	i = 0;
-	while(s[i])
+	while (s[i] != '\0')
 	{
-		if((((i % 20) == 0 && i <= 20) || (i % 21 == 0 && i > 21)) 
-		 && s[i] != '\n')
+		printf("%c\n", s[i]);
+		if ((s[i] == '.') || (s[i] == '#') || (s[i] == '\n'))
+			i++;
+		else
 			return (0);
 		i++;
 	}
-	if (i > 20)
-		if ((i - 20) % 21 == 0 && (i / 21) <= 26)
-			return ((i + 1) / 21);
-	if (i == 20)
+	if (i != 16)
+		return (0);
+	else
 		return (1);
+}
+
+int	count_tetri(char *s)
+{
+	int i;
+	int len;
+	char **new_str;
+
+	i = 0;
+	new_str = ft_strsplitstr(s, "\n\n");
+	len = ft_arrlen(new_str);
+	while(i < len)
+	{
+		if (check_count(new_str[i]) != 1)
+			return (0);
+		else
+			i++;
+	}
 	return (0);
 }
 
@@ -65,7 +104,7 @@ int	tetri_valid(char *s, int i)
 		}			
 		j++;
 	}
-	if (ans >= 3)
+	if (ans >= 4)
 		return (1);
 	return (0);
 }
@@ -74,12 +113,13 @@ int ft_valid(char *s)
 {
 	int n;
 
+	// n = ft_arrlen(ft_strsplitstr(s, "\n\n"));
 	n = count_tetri(s);
 	if (n == 0)
 		return (0);
 	while (n > 0)
 	{
-		if (tetri_valid(s, n - 1) == 0)
+		if ((tetri_valid(s, n) == 0) && (count_tetri(s) == 1))
 			return (0);
 		n--;
 	}

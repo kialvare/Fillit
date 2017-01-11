@@ -104,7 +104,7 @@ t_list	*store_tetri(char *raw_map)
 	// line = 0;
 	// len = ft_arrlen(ft_strsplitstr(raw_map, "\n\n"));
 	i = 0;
-	if (ft_valid(raw_map) != 1)
+	if (ft_valid(raw_map) == 1)
 	{
 		str = ft_strsplitstr(raw_map, "\n\n");
 		while (str[i] != '\0')
@@ -127,12 +127,9 @@ t_list	*store_tetri(char *raw_map)
 		// 	i++;
 		// }
 	}
-	else if (ft_valid(raw_map) == 1)
+	else if (ft_valid(raw_map) == 0)
 		return (put_error());
 	return(0);
-<<<<<<< HEAD
-}
-=======
 }
 
 // t_list	*store_tetri_two(t_list *first_link, char **str, int line)
@@ -177,19 +174,3 @@ t_list	*store_tetri(char *raw_map)
 // 		return (put_error());
 // 	return(0);
 // }
-
-// t_list	*store_tetri(char *raw_map)
-// {
-// 	if (!(tetri_valid(raw_map, count_tetri(raw_map))))
-// 	{
-// 		put_error();
-// 	}
-// 	else
-// 	{
-// 		ft_strlen(raw_map);
-// 		// printf("%d\n", count_tetri(raw_map));
-// 		printf("it works but why\n");
-// 	}
-// 	return (0);
-// }
->>>>>>> f9c1d0e176d600f625e75bcc3a5c14104deb5155
