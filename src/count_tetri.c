@@ -40,7 +40,6 @@ int	check_count(char *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		printf("%c\n", s[i]);
 		if ((s[i] == '.') || (s[i] == '#') || (s[i] == '\n'))
 			i++;
 		else
@@ -53,24 +52,25 @@ int	check_count(char *s)
 		return (1);
 }
 
-int	count_tetri(char *s)
-{
-	int i;
-	int len;
-	char **new_str;
+// int	count_tetri(char *s)
+// {
+// 	int i;
+// 	int len;
+// 	char **new_str;
 
-	i = 0;
-	new_str = ft_strsplitstr(s, "\n\n");
-	len = ft_arrlen(new_str);
-	while(i < len)
-	{
-		if (check_count(new_str[i]) != 1)
-			return (0);
-		else
-			i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	new_str = ft_strsplitstr(s, "\n\n");
+// 	len = ft_arrlen(new_str);
+// 	printf("Length of array: %d\n", len);
+// 	while(i < len)
+// 	{
+// 		if (check_count(new_str[i]) != 1)
+// 			return (0);
+// 		else
+// 			i++;
+// 	}
+// 	return (1);
+// }
 
 int	tetri_valid(char *s, int i)
 {
@@ -87,12 +87,13 @@ int	tetri_valid(char *s, int i)
 	k = j;
 	while (s[k] && k < limit)
 	{
+		printf("%d\n", s[k]);
 		if(s[k] == '#')
 			hashes++;
 		k++;
 	}
 	if ((hashes % 4) != 0)
-		return (0);
+		return (1);
 	while (j < limit)
 	{
 		if (s[j] == '#')
@@ -105,23 +106,44 @@ int	tetri_valid(char *s, int i)
 		j++;
 	}
 	if (ans >= 4)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int ft_valid(char *s)
 {
-	int n;
+	int i;
+	int len;
+	char **new_str;
 
-	// n = ft_arrlen(ft_strsplitstr(s, "\n\n"));
-	n = count_tetri(s);
-	if (n == 0)
-		return (0);
-	while (n > 0)
+	i = 0;
+	new_str = ft_strsplitstr(s, "\n\n");
+	len = ft_arrlen(new_str);
+	while(i < len)
 	{
-		if ((tetri_valid(s, n) == 0) && (count_tetri(s) == 1))
+		if ((check_count(new_str[i]) != 1) && (tetri_valid(new_str[i], len) != 1))
 			return (0);
-		n--;
+		i++;
 	}
 	return (1);
 }
+
+// int ft_valid(char *s)
+// {
+// 	int n;
+// 	int i;
+
+// 	n = ft_arrlen(ft_strsplitstr(s, "\n\n"));
+// 	i = 0;
+// 	if (n == 0 || n > 26)
+// 		return (0);
+// 	if (count_tetri(s) != 1)
+// 		return (0);
+// 	while (i <= n && i >= 0)
+// 	{
+// 		if (tetri_valid(s, i) != 1)
+// 			return (0);
+// 		i++;
+// 	}
+// 	return (0);
+// }
