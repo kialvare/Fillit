@@ -109,7 +109,7 @@ t_list	*store_tetri(char *raw_map)
 		str = ft_strsplitstr(raw_map, "\n\n");
 		while (str[i] != '\0')
 		{
-			printf("%d: %s\n", i, str[i]);
+			// printf("%d: %s\n", i, str[i]);
 			i++;
 		}
 		// str = ft_strsplitstr(raw_map, "\n");

@@ -46,7 +46,7 @@ int	check_count(char *s)
 			return (0);
 		i++;
 	}
-	if (i != 16)
+	if (i != 21)
 		return (0);
 	else
 		return (1);
