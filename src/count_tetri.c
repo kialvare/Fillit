@@ -87,7 +87,6 @@ int	tetri_valid(char *s, int i)
 	k = j;
 	while (s[k] && k < limit)
 	{
-		printf("%d\n", s[k]);
 		if(s[k] == '#')
 			hashes++;
 		k++;
@@ -121,6 +120,7 @@ int ft_valid(char *s)
 	len = ft_arrlen(new_str);
 	while(i < len)
 	{
+		ft_putstr(new_str[i]);
 		if ((check_count(new_str[i]) != 1) && (tetri_valid(new_str[i], len) != 1))
 			return (0);
 		i++;
