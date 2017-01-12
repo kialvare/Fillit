@@ -13,153 +13,74 @@
 #include <stdio.h>
 #include "fillit.h"
 
-// int	count_tetri(char *s)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while(s[i])
-// 	{
-// 		if((((i % 20) == 0 && i <= 20) || (i % 21 == 0 && i > 21)) 
-// 		 && s[i] != '\n')
-// 			return (0);
-// 		i++;
-// 	}
-// 	if (i > 20)
-// 		if ((i - 20) % 21 == 0 && (i / 21) <= 26)
-// 			return ((i + 1) / 21);
-// 	if (i == 20)
-// 		return (1);
-// 	return (0);
-// }
-
 int	check_count(char *s)
 {
 	int i;
-	// int hashes;
+	int hashes;
 
 	i = 0;
-	// hashes = 0;
+	hashes = 0;
 	while (s[i] != '\0')
 	{
 		if ((s[i] == '.') || (s[i] == '#') || (s[i] == '\n'))
 		{
-			// if (s[i] == '#')
-			// 	hashes++;
+			if (s[i] == '#')
+				hashes++;
 			i++;
 		}
 		else
 			return (0);
-		i++;
 	}
-	if (i == 19)
+	if (i == 19 && hashes == 4)
 		return (1);
 	else
 		return (0);
 }
 
-// int	count_tetri(char *s)
-// {
-// 	int i;
-// 	int len;
-// 	char **new_str;
-
-// 	i = 0;
-// 	new_str = ft_strsplitstr(s, "\n\n");
-// 	len = ft_arrlen(new_str);
-// 	printf("Length of array: %d\n", len);
-// 	while(i < len)
-// 	{
-// 		if (check_count(new_str[i]) != 1)
-// 			return (0);
-// 		else
-// 			i++;
-// 	}
-// 	return (1);
-// }
-
-int	tetri_valid(char *s, int i)
+int count_tetri(char *s)
 {
-	int	j;
-	int	limit;
-	int	k;
-	int	hashes;
-	int ans;
+	int i;
+	int connection;
 
-	ans = 0;
-	hashes = 0;
-	j = (i * 21);
-	limit = (j + 21);
-	k = j;
-	// printf("%d\n", k);
-	while (s[k] && k < limit)
+	i = 0;
+	connection = 0;
+	while (s[i] != '\0')
 	{
-		// printf("The string (I think): %c\n", s[k]);
-		if(s[k] == '#')
+		if (s[i] == '#')
 		{
-			printf("The hashes: %c\n", s[k]);
-			hashes++;
+			if (s[i + 1] == '#')
+				connection++;
+			if (s[i - 1] == '#')
+				connection++;
+			if (s[i + 5] == '#')
+				connection++;
+			if (s[i - 5] == '#')
+				connection++;
 		}
-		k++;
+		i++;
 	}
-	if (hashes != (4 * i))
-		return (0);
-	while (j < limit)
-	{
-		if (s[j] == '#')
-		{
-			if (s[j + 1] == '#')
-				ans += 1;
-			if (s[j + 5] == '#')
-				ans += 1;
-		}			
-		j++;
-	}
-	if (ans >= 3)
-		return (1);
-	return (0);
+	return (connection);
 }
 
 int ft_valid(char *s)
 {
 	int i;
 	int len;
+	int pieces;
 	char **new_str;
 
 	i = 0;
+	pieces = 0;
 	new_str = ft_strsplitstr(s, "\n\n");
 	len = ft_arrlen(new_str);
-	if (tetri_valid(s, len))
+	while (new_str[i] != NULL)
 	{
-		while(i < len)
-		{
-			printf("IT WENT IN");
-			if (check_count(new_str[i]) != 1)
-				return (1);
-			i++;
-		}
-		return (1);
+		if (check_count(new_str[i]) == 1 )
+			if ((count_tetri(new_str[i]) == 6) || (count_tetri(new_str[i]) == 8))
+				pieces++;
+		i++;
 	}
-	else
+	if (pieces != len || pieces > 26)
 		return (0);
+	return (1);
 }
-
-// int ft_valid(char *s)
-// {
-// 	int n;
-// 	int i;
-
-// 	n = ft_arrlen(ft_strsplitstr(s, "\n\n"));
-// 	i = 0;
-// 	if (n == 0 || n > 26)
-// 		return (0);
-// 	if (count_tetri(s) != 1)
-// 		return (0);
-// 	while (i <= n && i >= 0)
-// 	{
-// 		if (tetri_valid(s, i) != 1)
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (0);
-// }

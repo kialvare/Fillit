@@ -93,84 +93,23 @@ t_list	*put_error(void)
 t_list	*store_tetri(char *raw_map)
 {
 	char	**str;
-	//t_piece	string;
+	t_piece	string;
 	int i;
-	//int j;
-	//int k;
-	// int len;
-	// t_list	*next_link;
-	// t_list *list;
+	int len;
 
-	// line = 0;
-	// len = ft_arrlen(ft_strsplitstr(raw_map, "\n\n"));
+	str = ft_strsplitstr(raw_map, "\n\n");
+	len = ft_arrlen(str);
 	i = 0;
 	if (ft_valid(raw_map) == 1)
 	{
-		str = ft_strsplitstr(raw_map, "\n\n");
 		while (str[i] != '\0')
 		{
-			// printf("%d: %s\n", i, str[i]);
+			string.str = &str[i];
+			//printf("%d: %s\n", i, string.str[i]);
 			i++;
 		}
-		// str = ft_strsplitstr(raw_map, "\n");
-		// while (i < len)
-		// {
-		// 	j = 0;
-		// 	k = 0;
-		// 	while (j < 4)
-		// 	{
-		// 		string.str[k] = &str[i][j];
-		// 		// printf("%d: %s\n", k, string.str[k]);
-		// 		j++;
-		// 		k++;
-		// 	}
-		// 	i++;
-		// }
 	}
 	else if (ft_valid(raw_map) == 0)
 		return (put_error());
 	return(0);
 }
-
-// t_list	*store_tetri_two(t_list *first_link, char **str, int line)
-// {
-// 	ft_strcat(first_link->content, str[line++]);
-// 	ft_strcat(first_link->content, str[line++]);
-// 	ft_strcat(first_link->content, str[line++]);
-// 	return (0);
-// }
-
-// t_list	*store_tetri(char *raw_map)
-// {
-// 	char	**str;
-// 	int		line;
-// 	t_list	*first_link;
-// 	t_list	*next_link;
-// 	t_list *list;
-
-// 	line = 0;
-// 	if (tetri_valid(raw_map, count_tetri(raw_map)))
-// 	{
-// 		str = ft_strsplit(raw_map, '\n');
-// 		first_link = ft_lstnew(str[line++], 17);
-// 		store_tetri_two(first_link, str, line);
-// 		line += 3;
-// 		list = first_link;
-// 		while (str[line])
-// 		{
-// 			next_link = ft_lstnew(str[line++], 17);
-// 			store_tetri_two(next_link, str, line);
-// 			line += 3;
-// 			ft_lstadd(&first_link, next_link);
-// 			while (first_link)
-// 			{
-// 				printf("%s\n", first_link->content);
-// 				first_link = first_link->next;
-// 			}
-// 		}
-// 		return (list);
-// 	}
-// 	else if (!(tetri_valid(raw_map, count_tetri(raw_map))))
-// 		return (put_error());
-// 	return(0);
-// }

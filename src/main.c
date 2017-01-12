@@ -16,13 +16,13 @@ int		main(int ac, char **av)
 {
 	char		*file;
 	t_list		*pieces;
-	// t_map		*map;
+	t_map		*map;
 
 	if (ac == 2)
 	{
 		file = read_file(av[1]);
 		pieces = store_tetri(file);
-		// map = get_a_piece(pieces);
+		map = get_a_piece(pieces);
 		// print_map(map);
 		// free_map(map);
 		// free_list(pieces);
