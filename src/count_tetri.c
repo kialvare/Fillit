@@ -46,10 +46,10 @@ int	check_count(char *s)
 			return (0);
 		i++;
 	}
-	if (i != 21)
-		return (0);
-	else
+	if (i == 19 || i == 20)
 		return (1);
+	else
+		return (0);
 }
 
 // int	count_tetri(char *s)
@@ -85,14 +85,19 @@ int	tetri_valid(char *s, int i)
 	j = (i * 21);
 	limit = (j + 21);
 	k = j;
+	printf("%d\n", k);
 	while (s[k] && k < limit)
 	{
+		printf("The string (I think): %c\n", s[k]);
 		if(s[k] == '#')
+		{
+			printf("The hashes: %c\n", s[k]);
 			hashes++;
+		}
 		k++;
 	}
 	if ((hashes % 4) != 0)
-		return (1);
+		return (0);
 	while (j < limit)
 	{
 		if (s[j] == '#')
@@ -105,8 +110,8 @@ int	tetri_valid(char *s, int i)
 		j++;
 	}
 	if (ans >= 4)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 int ft_valid(char *s)
@@ -118,14 +123,17 @@ int ft_valid(char *s)
 	i = 0;
 	new_str = ft_strsplitstr(s, "\n\n");
 	len = ft_arrlen(new_str);
-	while(i < len)
+	if (tetri_valid(s, len))
 	{
-		ft_putstr(new_str[i]);
-		if ((check_count(new_str[i]) != 1) && (tetri_valid(new_str[i], len) != 1))
-			return (0);
-		i++;
+		while(i < len)
+		{
+			printf("IT WENT IN");
+			if (check_count(new_str[i]) != 1)
+				return (1);
+			i++;
+		}
 	}
-	return (1);
+	return (0);
 }
 
 // int ft_valid(char *s)
