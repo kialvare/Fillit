@@ -30,14 +30,14 @@ typedef struct 			s_map
 
 typedef struct 			s_piece
 {
-	char 				**str;
+	char 				**pieces;
 }						t_piece;
 
 /* ********************* convert.c ******************** */
 char					**allocate_array(char **str);
 char 					**convert(char *str);
 
-/* ********************* count_tetri.c ******************** */
+/* ********************* validation.c ******************** */
 int						count_tetri(char *s);
 int						check_count(char *s);
 int 					ft_valid(char *s);
@@ -46,7 +46,7 @@ int 					ft_valid(char *s);
 int						test_map(t_map *map, char **piece, int i, int j);
 int						test_piece(t_map *map, char **piece);
 t_map 					*start(char **piece, int num);
-t_map 					*get_a_piece(t_piece **piece);
+t_map 					*get_a_piece(t_piece *piece);
 int						place_piece(t_piece *piece, t_map *map, int x, int y);
 
 /* ************************* map.c ************************ */
@@ -59,8 +59,8 @@ t_map					*make_map(int n);
 /* ********************** read_map.c ********************** */
 
 char 					*read_file(char *file);
-t_list					*store_tetri(char *raw_map);
-t_list 					*put_error(void);
+t_piece					*store_tetri(char *raw_map);
+t_piece 				*put_error(void);
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);
 

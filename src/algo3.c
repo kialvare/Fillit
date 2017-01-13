@@ -86,7 +86,7 @@
 // 	return (0);
 // }
 
-// t_map 	*start(char **piece, int num)
+// t_map 	*start(t_piece *piece, int num)
 // {
 // 	int current_map_size;
 // 	int i;
@@ -107,33 +107,16 @@
 // 	return (map);
 // }
 
-// t_map	*get_a_piece(t_list *piece)
+// t_map	*get_a_piece(t_piece *piece)
 // {
-// 	t_map *thing;
+// 	int n;
 // 	int size;
-// 	char *all_pieces;
-// 	char **the_piece;
-// 	int i;
+// 	// t_map **map;
 
-// 	size = smallest_square(ft_lstcount(piece));
-// 	all_pieces = piece->content;
-// 	printf("%s\n", all_pieces);
-// 	i = 0;
-// 	while (all_pieces[i] != '\0')
-// 	{
-// 		the_piece = convert(&all_pieces[i]);
-// 		thing = start(the_piece, ft_strlen(all_pieces));
-// 		i++;
-// 	}
-// 	return (thing);
+// 	n = ft_arrlen(piece->str);
+// 	n = 2;
+// 	size = smallest_square(n);
+// 	printf("%d\n", size);
+
+// 	return (0);
 // }
-
-t_map	*get_a_piece(t_piece *piece)
-{
-	int size;
-	// t_map **map;
-
-	size = smallest_square(ft_arrlen(piece));
-
-	return (0);
-}

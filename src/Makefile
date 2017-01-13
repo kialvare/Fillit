@@ -31,7 +31,7 @@ SRC=main.c \
 	map.c \
 	ft_strsplitstr.c \
 	ft_arrlen.c \
-	count_tetri.c 
+	validation.c 
 
 all: $(NAME)
 

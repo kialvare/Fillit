@@ -84,30 +84,43 @@ char *read_file(char *file)
 	return(ft_strdup(tmp));
 }
 
-t_list	*put_error(void)
+t_piece	*put_error(void)
 {
 	ft_putendl("error");
 	return (0);
 }
 
-t_list	*store_tetri(char *raw_map)
+t_piece	*store_tetri(char *raw_map)
 {
 	char	**str;
-	t_piece	string;
+	//char 	**str1;
+	//t_piece	*string;
 	int i;
+	int j;
 	int len;
 
 	str = ft_strsplitstr(raw_map, "\n\n");
+	//string = NULL;
 	len = ft_arrlen(str);
 	i = 0;
+	j = 0;
 	if (ft_valid(raw_map) == 1)
 	{
 		while (str[i] != '\0')
 		{
-			string.str = &str[i];
-			//printf("%d: %s\n", i, string.str[i]);
+			str[i] = *ft_strsplitstr(str[i], "\n");
+			// printf("%d: %c\n", i, str[0][0]);
+			//string->pieces = &str[i];
+			//printf("%d: %s\n", i, str[i]);
+			//printf("%d: %c\n", i, str1[i][j]);
 			i++;
 		}
+		printf("%c\n", str[0][0]);
+		printf("%c\n", str[0][1]);
+		printf("%c\n", str[0][2]);
+		printf("%c\n", str[0][3]);
+		printf("%c\n", str[1][0]);
+		printf("%c\n", str[1][1]);
 	}
 	else if (ft_valid(raw_map) == 0)
 		return (put_error());
