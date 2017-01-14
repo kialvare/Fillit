@@ -84,40 +84,61 @@ char *read_file(char *file)
 	return(ft_strdup(tmp));
 }
 
-t_piece	*put_error(void)
+void 	hash_to_alph(char **str, int len)
+{
+	int i;
+	int j;
+	char c;
+
+	i = 0;
+	c = 'A';
+	while (i < len)
+	{
+		j = 0;
+		while (str[i][j] != '\0')
+		{
+			if (str[i][j] == '#')
+			{
+				str[i][j] = c;
+			}
+			j++;
+		}
+		c++;
+		i++;
+	}
+}
+
+char	*put_error(void)
 {
 	ft_putendl("error");
 	return (0);
 }
 
-t_piece	*store_tetri(char *raw_map)
+char	*store_tetri(char *raw_map)
 {
 	char	**str;
-	t_piece	*string;
+	char ***pieces;
 	int i;
 	int len;
 
-	str = ft_strsplitstr(raw_map, "\n\n");
-	//printf("%s\n", str[1]);
-	string = ft_memalloc(sizeof(t_piece));
-	len = ft_arrlen(str);
 	if (ft_valid(raw_map) == 1)
 	{
 		i = 0;
+		str = ft_strsplitstr(raw_map, "\n\n");
+		len = ft_arrlen(str);
+		hash_to_alph(str, len);
+		pieces = ft_memalloc(sizeof(char **) * (len + 1));
 		while (i < len)
 		{
-			if (ft_strlen(str[i]) == 19)
-			{
-				str[i] = *ft_strsplitstr(str[i], "\n");
-				string->pieces = &str[i];
-				printf("%d: %s\n", i, string->pieces[i]);
-				i++;
-			}
-			else
-			{
-				return (0);
-			}
+			pieces[i] = ft_strsplitstr(str[i], "\n");
+			printf("%s\n", pieces[i][0]);
+			printf("%s\n", pieces[i][1]);
+			printf("%s\n", pieces[i][2]);
+			printf("%s\n", pieces[i][3]);
+			i++;
 		}
+
+
 	}
 	else if (ft_valid(raw_map) == 0)
 		return (put_error());

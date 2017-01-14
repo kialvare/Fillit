@@ -15,7 +15,7 @@
 int		main(int ac, char **av)
 {
 	char		*file;
-	t_piece		*pieces;
+	char		*pieces;
 	//t_map		*map;
 
 	if (ac == 2)

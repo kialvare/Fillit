@@ -107,16 +107,16 @@
 // 	return (map);
 // }
 
-// t_map	*get_a_piece(t_piece *piece)
-// {
-// 	int n;
-// 	int size;
-// 	// t_map **map;
+t_map	*get_a_piece(t_piece *piece)
+{
+	int n;
+	int size;
+	// t_map **map;
 
-// 	n = ft_arrlen(piece->str);
-// 	n = 2;
-// 	size = smallest_square(n);
-// 	printf("%d\n", size);
+	n = ft_arrlen(piece->str);
+	n = 2;
+	size = smallest_square(n);
+	printf("%d\n", size);
 
-// 	return (0);
-// }
+	return (0);
+}

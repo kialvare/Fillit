@@ -47,6 +47,14 @@ int count_tetri(char *s)
 	{
 		if (s[i] == '#')
 		{
+			// if ((i + 1) > 19 && s[i + 1] == '#')
+			// 	connection++;
+			// if ((i - 1) < 0 && s[i - 1] == '#')
+			// 	connection++;
+			// if ((i + 5) > 19 && s[i + 5] == '#')
+			// 	connection++;
+			// if ((i - 5) < 0 && s[i - 5] == '#')
+			// 	connection++;
 			if (s[i + 1] == '#')
 				connection++;
 			if (s[i - 1] == '#')

@@ -59,8 +59,9 @@ t_map					*make_map(int n);
 /* ********************** read_map.c ********************** */
 
 char 					*read_file(char *file);
-t_piece					*store_tetri(char *raw_map);
-t_piece 				*put_error(void);
+char					*store_tetri(char *raw_map);
+char 					*put_error(void);
+void 					hash_to_alph(char **str, int len);
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);
 
