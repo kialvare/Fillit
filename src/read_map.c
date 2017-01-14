@@ -93,27 +93,31 @@ t_piece	*put_error(void)
 t_piece	*store_tetri(char *raw_map)
 {
 	char	**str;
-	char **the_map;
-	//t_piece	*string;
+	t_piece	*string;
 	int i;
-	//int j;
 	int len;
 
 	str = ft_strsplitstr(raw_map, "\n\n");
-	the_map = NULL;
+	//printf("%s\n", str[1]);
+	string = ft_memalloc(sizeof(t_piece));
 	len = ft_arrlen(str);
-	i = 0;
 	if (ft_valid(raw_map) == 1)
 	{
-		while (str[i] != '\0')
+		i = 0;
+		while (i < len)
 		{
-			//ft_strsplitstr(str[i], "\n");
-			//printf("%s\n", str[i]);
-			i++;
+			if (ft_strlen(str[i]) == 19)
+			{
+				str[i] = *ft_strsplitstr(str[i], "\n");
+				string->pieces = &str[i];
+				printf("%d: %s\n", i, string->pieces[i]);
+				i++;
+			}
+			else
+			{
+				return (0);
+			}
 		}
-		printf("%s\n", str[0]);
-		the_map = ft_strsplitstr(str[0], "\n");
-		printf("%s\n", the_map[0]);
 	}
 	else if (ft_valid(raw_map) == 0)
 		return (put_error());
