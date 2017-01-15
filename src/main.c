@@ -15,14 +15,14 @@
 int		main(int ac, char **av)
 {
 	char		*file;
-	char		*pieces;
-	//t_map		*map;
+	char		***pieces;
+	t_map		*map;
 
 	if (ac == 2)
 	{
 		file = read_file(av[1]);
 		pieces = store_tetri(file);
-		//map = get_a_piece(pieces);
+		map = start(pieces);
 		// print_map(map);
 		// free_map(map);
 		// free_list(pieces);

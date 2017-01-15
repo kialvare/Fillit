@@ -45,9 +45,10 @@ int 					ft_valid(char *s);
 /* ********************* algo3.c ******************** */
 int						test_map(t_map *map, char **piece, int i, int j);
 int						test_piece(t_map *map, char **piece);
-t_map 					*start(char **piece, int num);
-t_map 					*get_a_piece(t_piece *piece);
-int						place_piece(t_piece *piece, t_map *map, int x, int y);
+t_map 					*start(char ***piece);
+t_map 					*get_a_piece(char **piece);
+int						place_piece(char **piece, t_map *map, int x, int y);
+// int						place_piece(char **piece, t_map *map);
 
 /* ************************* map.c ************************ */
 
@@ -59,8 +60,8 @@ t_map					*make_map(int n);
 /* ********************** read_map.c ********************** */
 
 char 					*read_file(char *file);
-char					*store_tetri(char *raw_map);
-char 					*put_error(void);
+char					***store_tetri(char *raw_map);
+void 					put_error(void);
 void 					hash_to_alph(char **str, int len);
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);

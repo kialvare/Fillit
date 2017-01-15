@@ -108,13 +108,12 @@ void 	hash_to_alph(char **str, int len)
 	}
 }
 
-char	*put_error(void)
+void	put_error(void)
 {
 	ft_putendl("error");
-	return (0);
 }
 
-char	*store_tetri(char *raw_map)
+char	***store_tetri(char *raw_map)
 {
 	char	**str;
 	char ***pieces;
@@ -131,16 +130,17 @@ char	*store_tetri(char *raw_map)
 		while (i < len)
 		{
 			pieces[i] = ft_strsplitstr(str[i], "\n");
-			printf("%s\n", pieces[i][0]);
-			printf("%s\n", pieces[i][1]);
-			printf("%s\n", pieces[i][2]);
-			printf("%s\n", pieces[i][3]);
+			// printf("%s\n", pieces[i][0]);
+			// printf("%s\n", pieces[i][1]);
+			// printf("%s\n", pieces[i][2]);
+			// printf("%s\n", pieces[i][3]);
 			i++;
 		}
-
-
+		return(pieces);
 	}
-	else if (ft_valid(raw_map) == 0)
-		return (put_error());
-	return(0);
+	else
+	{
+		put_error();
+		return (0);
+	}
 }
