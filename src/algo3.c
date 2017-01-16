@@ -21,7 +21,7 @@
 // 	while (i != x)
 // }
 
-int		place_piece(char **piece, t_map *map, int x, int y)
+void	place_piece(char **piece, t_map *map, int x, int y)
 {
 	int i;
 	int j;
@@ -38,7 +38,6 @@ int		place_piece(char **piece, t_map *map, int x, int y)
 		}
 		i++;
 	}
-	return (0);
 }
 
 int	test_map(t_map *map, char **piece, int i, int j)
@@ -65,23 +64,23 @@ int	test_map(t_map *map, char **piece, int i, int j)
 
 int test_piece(t_map *map, char **piece)
 {
-	int i;
-	int j;
+	int x;
+	int y;
 
-	i = 0;
-	while (i < 5)
+	x = 0;
+	while (x < 5)
 	{
-		j = 0;
-		while (j < 5)
+		y = 0;
+		while (y < 5)
 		{
-			if (piece[i][j] != '.')
+			if (piece[x][y] != '.')
 			{
 				if(!test_map(map, piece, i, j))
 					return (0);
 			}
-			j++;
+			y++;
 		}
-		i++;
+		x++;
 	}
 	return (0);
 }
@@ -95,16 +94,16 @@ t_map 	*start(char ***pieces)
 	current_map_size = 10;
 	map = make_map(current_map_size);
 	i = 0;
+	while (pieces[i] != '\0')
+	{
+		test_piece(map, piece);
+		i++;
+	}
 	// while (pieces[i] != '\0')
 	// {
-	// 	if (!test_piece(map, pieces[i]))
-	// 	{
-	// 		free_map(map);
-	// 		current_map_size++;
-	// 		map = make_map(current_map_size);
-	// 	}
+	// 	place_piece(pieces[i], map, 0, 0);
+	// 	i++;
 	// }
-	place_piece(pieces[0], map, -2, 0);
 	print_map(map);
 	return (map);
 }

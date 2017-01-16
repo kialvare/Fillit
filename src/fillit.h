@@ -47,7 +47,7 @@ int						test_map(t_map *map, char **piece, int i, int j);
 int						test_piece(t_map *map, char **piece);
 t_map 					*start(char ***piece);
 t_map 					*get_a_piece(char **piece);
-int						place_piece(char **piece, t_map *map, int x, int y);
+void					place_piece(char **piece, t_map *map, int x, int y);
 // int						place_piece(char **piece, t_map *map);
 
 /* ************************* map.c ************************ */
