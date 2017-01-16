@@ -26,13 +26,6 @@ typedef struct 			s_map
 	char 				**arr;
 }						t_map;
 
-/* ********************* STORING ********************** */
-
-typedef struct 			s_piece
-{
-	char 				**pieces;
-}						t_piece;
-
 /* ********************* convert.c ******************** */
 char					**allocate_array(char **str);
 char 					**convert(char *str);
