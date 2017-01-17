@@ -28,7 +28,7 @@ int	check_count(char *s)
 			i++;
 		}
 		else
-			return (0);
+			return (1);
 	}
 	if (i == 19 && hashes == 4)
 		return (1);
@@ -47,21 +47,13 @@ int count_tetri(char *s)
 	{
 		if (s[i] == '#')
 		{
-			// if ((i + 1) > 19 && s[i + 1] == '#')
-			// 	connection++;
-			// if ((i - 1) < 0 && s[i - 1] == '#')
-			// 	connection++;
-			// if ((i + 5) > 19 && s[i + 5] == '#')
-			// 	connection++;
-			// if ((i - 5) < 0 && s[i - 5] == '#')
-			// 	connection++;
-			if (s[i + 1] == '#')
+			if ((i + 1) < 19 && s[i + 1] == '#')
 				connection++;
-			if (s[i - 1] == '#')
+			if ((i - 1) >= 0 && s[i - 1] == '#')
 				connection++;
-			if (s[i + 5] == '#')
+			if ((i + 5) < 19 && s[i + 5] == '#')
 				connection++;
-			if (s[i - 5] == '#')
+			if ((i - 5) >= 0 && s[i - 5] == '#')
 				connection++;
 		}
 		i++;

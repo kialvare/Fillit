@@ -24,7 +24,6 @@ int test_piece(t_map *map, t_piece *piece)
 int start(t_map *map, t_piece *pieces, int num_pieces)
 	int current_map_size; (the size of the smallest board possible)
 	int i; => counter for the number of pieces
-	t_piece *current_piece;
 
 	current_map_size = map->size;
 	current_piece = piece->next;

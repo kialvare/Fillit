@@ -25,8 +25,8 @@ LDFLAGS=-L./libft/
 LDLIBS=-lft
 
 SRC=main.c \
-	read_map.c \
-	algo3.c \
+	store.c \
+	algo.c \
 	convert.c \
 	map.c \
 	ft_strsplitstr.c \

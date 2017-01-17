@@ -26,6 +26,9 @@ typedef struct 			s_map
 	char 				**arr;
 }						t_map;
 
+/* ********************* main.c ******************** */
+char 					*read_file(char *file);
+
 /* ********************* convert.c ******************** */
 char					**allocate_array(char **str);
 char 					**convert(char *str);
@@ -36,12 +39,17 @@ int						check_count(char *s);
 int 					ft_valid(char *s);
 
 /* ********************* algo3.c ******************** */
-int						test_map(t_map *map, char **piece, int i, int j);
-int						test_piece(t_map *map, char **piece);
-t_map 					*start(char ***piece);
-t_map 					*get_a_piece(char **piece);
-void					place_piece(char **piece, t_map *map, int x, int y);
+// int						test_map(t_map *map, char **piece, int i, int j);
+// int						test_piece(t_map *map, char **piece);
+// t_map 					*start(char ***piece);
+// t_map 					*get_a_piece(char **piece);
+// void					place_piece(char **piece, t_map *map, int x, int y);
 // int						place_piece(char **piece, t_map *map);
+int 	solve(char ***pieces, int k, t_map *map, int size);
+t_map *start(char ***pieces, int count);
+t_map	*place_piece(char **piece, t_map *map, int x, int y);
+t_map *reset(char **piece, t_map *map, int x, int y);
+int check_piece(char **piece, t_map *map, int x, int y);
 
 /* ************************* map.c ************************ */
 
@@ -50,12 +58,14 @@ int						smallest_square(int n);
 void					print_map(t_map *map);
 t_map					*make_map(int n);
 
-/* ********************** read_map.c ********************** */
+/* ********************** store.c ********************** */
 
-char 					*read_file(char *file);
+int		find_width(char **str);
+int		find_height(char **str);
 char					***store_tetri(char *raw_map);
-void 					put_error(void);
 void 					hash_to_alph(char **str, int len);
+
+/* ********************** free.c ********************** */
 // t_store				*free_list(t_store *list);
 // void					free_tetri(t_piece *piece);
 
