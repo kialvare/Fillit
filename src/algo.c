@@ -40,22 +40,20 @@ int check_piece(char **piece, t_map *map, int x, int y)
 	int w;
 
 	h = find_height(piece);
-	printf("%d\n", h);
 	w = find_width(piece);
-	printf("%d\n", w);
 	i = 0;
 	while (i < w)
 	{
 		j = 0;
 		while (j < h)
 		{
-			if (ft_isupper(piece[i][j]) && map->arr[x + i][y + j] != '.')
+			if (ft_isupper(piece[j][i]) && map->arr[y + j][x + i] != '.')
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 t_map	*place_piece(char **piece, t_map *map, int x, int y)
@@ -78,46 +76,55 @@ t_map	*place_piece(char **piece, t_map *map, int x, int y)
 	return (map);
 }
 
-t_map 	*start(char ***pieces, int count)
-{
-	int k;
-	int size;
-	t_map *map;
-
-	k = -1;
-	size = smallest_square(count);
-	map = make_map(size);
-	while (!(solve(pieces, ++k, map, size)))
-	{
-		size++;
-		free_map(map);
-		map = make_map(size);
-		k = -1;
-	}
-	return (map);
-}
-
-int 	solve(char ***pieces, int k, t_map *map, int size)
+int 	solve(char ***pieces, t_map *map, int size)
 {
 	int i;
 	int j;
+	int k;
 
-	i = -3;
-	if (pieces[k] == NULL)
+	j = 0;
+	if (pieces[0] == NULL)
 		return (1);
-	while (i < size + 3)
+	while (j < size - find_height(pieces[k]) + 1)
 	{
-		j = 0;
-		while (j < size + 3)
+		i = 0;
+		while (i < size - find_width(pieces[]) + 1)
 		{
 			if (check_piece(pieces[k], map, i, j))
 			{
-				place_piece(pieces[k], map,i ,j);
-				solve(pieces, k + 1, map, size);
+				if (solve(pieces[k++], map, size))
+					return (1);
+				else
+					place_piece(pieces[k], map,i ,j);
+				// else
+				// 	reset(pieces[], map, )
 			}
+			i++;
 		}
+		j++;
 	}
 	return (0);
+}
+
+t_map 	*start(char ***pieces, int count)
+{
+	int i;
+	int size;
+	t_map *map;
+
+	size = smallest_square(count); // count is the number of pieces
+	map = make_map(size);
+	i = 0;
+	while (i < count)
+	{
+		while (!(solve(pieces[i], map, size)))
+		{
+			size++;
+			free_map(map);
+			map = make_map(size);
+		}
+	}
+	return (map);
 }
 
 // int	test_map(t_map *map, char **piece, int i, int j)

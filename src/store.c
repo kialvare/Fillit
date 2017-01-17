@@ -86,10 +86,6 @@ void 	hash_to_alph(char **str, int len)
 		i++;
 	}
 }
-// printf("%s\n", pieces[i][0]);
-// printf("%s\n", pieces[i][1]);
-// printf("%s\n", pieces[i][2]);
-// printf("%s\n", pieces[i][3]);
 
 char	***store_tetri(char *raw_map)
 {

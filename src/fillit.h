@@ -45,7 +45,7 @@ int 					ft_valid(char *s);
 // t_map 					*get_a_piece(char **piece);
 // void					place_piece(char **piece, t_map *map, int x, int y);
 // int						place_piece(char **piece, t_map *map);
-int 	solve(char ***pieces, int k, t_map *map, int size);
+int 	solve(char ***pieces, t_map *map, int size);
 t_map *start(char ***pieces, int count);
 t_map	*place_piece(char **piece, t_map *map, int x, int y);
 t_map *reset(char **piece, t_map *map, int x, int y);
@@ -64,10 +64,6 @@ int		find_width(char **str);
 int		find_height(char **str);
 char					***store_tetri(char *raw_map);
 void 					hash_to_alph(char **str, int len);
-
-/* ********************** free.c ********************** */
-// t_store				*free_list(t_store *list);
-// void					free_tetri(t_piece *piece);
 
 char			**ft_strsplitstr(char const *s, char *delim);
 
