@@ -55,8 +55,7 @@ int check_piece(char **piece, t_map *map, int x, int y)
 		}
 		i++;
 	}
-	place_piece(piece, map, x, y);
-	return (1);
+	return (0);
 }
 
 t_map	*place_piece(char **piece, t_map *map, int x, int y)
@@ -103,22 +102,18 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 	int i;
 	int j;
 
-	i = 0;
+	i = -3;
 	if (pieces[k] == NULL)
 		return (1);
-	while (i < size - find_height(pieces[k]) + 1)
+	while (i < size + 3)
 	{
 		j = 0;
-		while (j < size - find_width(pieces[k]) + 1)
+		while (j < size + 3)
 		{
 			if (check_piece(pieces[k], map, i, j))
 			{
-				if (solve(pieces, k + 1, map, size))
-					return (1);
-				else
-					place_piece(pieces[k], map,i ,j);
-				// else
-				// 	reset(pieces[k], map, i, j);
+				place_piece(pieces[k], map,i ,j);
+				solve(pieces, k + 1, map, size);
 			}
 		}
 	}
