@@ -44,7 +44,7 @@ int		smallest_square(int n)
 	int i;
 	int square;
 
-	i = 1;
+	i = 2;
 	while (i)
 	{
 		square = i * i;

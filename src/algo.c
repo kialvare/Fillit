@@ -76,53 +76,52 @@ t_map	*place_piece(char **piece, t_map *map, int x, int y)
 	return (map);
 }
 
-int 	solve(char ***pieces, t_map *map, int size)
+int 	solve(char ***pieces, int k, t_map *map, int size)
 {
 	int i;
 	int j;
-	int k;
 
 	j = 0;
-	if (pieces[0] == NULL)
+	if (pieces[k] == NULL)
 		return (1);
 	while (j < size - find_height(pieces[k]) + 1)
 	{
 		i = 0;
-		while (i < size - find_width(pieces[]) + 1)
+		while (i < size - find_width(pieces[k]) + 1)
 		{
 			if (check_piece(pieces[k], map, i, j))
 			{
-				if (solve(pieces[k++], map, size))
+				if (solve(pieces, k + 1, map, size))
+				{
+					place_piece(pieces[k], map, i, j);
 					return (1);
+				}
 				else
-					place_piece(pieces[k], map,i ,j);
-				// else
-				// 	reset(pieces[], map, )
+					reset(pieces[k], map, i, j);
 			}
 			i++;
 		}
 		j++;
 	}
+	// place_piece(pieces[k], map, i, j);
 	return (0);
 }
 
 t_map 	*start(char ***pieces, int count)
 {
-	int i;
+	int k;
 	int size;
 	t_map *map;
 
 	size = smallest_square(count); // count is the number of pieces
 	map = make_map(size);
-	i = 0;
-	while (i < count)
+	k = 0;
+	while (!(solve(pieces, ++k, map, size)))
 	{
-		while (!(solve(pieces[i], map, size)))
-		{
-			size++;
-			free_map(map);
-			map = make_map(size);
-		}
+		size++;
+		free_map(map);
+		map = make_map(size);
+		k = -1;
 	}
 	return (map);
 }
