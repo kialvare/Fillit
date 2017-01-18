@@ -56,7 +56,7 @@ int check_piece(char **piece, t_map *map, int x, int y)
 	return (1);
 }
 
-t_map	*place_piece(char **piece, t_map *map, int x, int y)
+void	place_piece(char **piece, t_map *map, int x, int y)
 {
 	int i;
 	int j;
@@ -73,7 +73,6 @@ t_map	*place_piece(char **piece, t_map *map, int x, int y)
 		}
 		i++;
 	}
-	return (map);
 }
 
 int 	solve(char ***pieces, int k, t_map *map, int size)
@@ -91,11 +90,9 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 		{
 			if (check_piece(pieces[k], map, i, j))
 			{
+				place_piece(pieces[k], map, i, j);
 				if (solve(pieces, k + 1, map, size))
-				{
-					place_piece(pieces[k], map, i, j);
 					return (1);
-				}
 				else
 					reset(pieces[k], map, i, j);
 			}
@@ -103,25 +100,21 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 		}
 		j++;
 	}
-	// place_piece(pieces[k], map, i, j);
 	return (0);
 }
 
 t_map 	*start(char ***pieces, int count)
 {
-	int k;
 	int size;
 	t_map *map;
 
 	size = smallest_square(count); // count is the number of pieces
 	map = make_map(size);
-	k = 0;
-	while (!(solve(pieces, ++k, map, size)))
+	while (!(solve(pieces, 0, map, size)))
 	{
 		size++;
 		free_map(map);
 		map = make_map(size);
-		k = -1;
 	}
 	return (map);
 }

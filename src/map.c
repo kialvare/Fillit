@@ -23,11 +23,11 @@ int		free_map(t_map *map)
 	i = 0;
 	while (i < map->size)
 	{
-		ft_memdel((void **)(map->arr));
+		ft_memdel((void **)&(map->arr));
 		i++;
 	}
-	ft_memdel((void **)(map->arr));
-	ft_memdel((void **)map);
+	ft_memdel((void **)&(map->arr));
+	ft_memdel((void **)&map);
 	return (0);
 }
 
@@ -39,20 +39,30 @@ int		free_map(t_map *map)
 */
 
 // If there's only one piece and it's a square, make it 2 x 2?
-int		smallest_square(int n)
-{
-	int i;
-	int square;
+// int		smallest_square(int n)
+// {
+// 	int i;
+// 	int square;
 
-	i = 2;
-	while (i)
-	{
-		square = i * i;
-		if (n < square)
-			return (i * 2);
-		i++;
-	}
-	return (square);
+// 	i = 2;
+// 	while (i)
+// 	{
+// 		square = i * i;
+// 		if (n < square)
+// 			return (i * 2);
+// 		i++;
+// 	}
+// 	return (square);
+// }
+
+int smallest_square(int n)
+{
+	int size;
+
+	size = 2;
+	while (size * size < n)
+		size++;
+	return (size);
 }
 
 /*
