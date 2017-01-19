@@ -71,7 +71,7 @@ int ft_valid(char *s)
 	i = 0;
 	pieces = 0;
 	new_str = ft_strsplitstr(s, "\n\n");
-	len = ft_arrlen(new_str);
+	len = ft_arrlen((void **)new_str);
 	while (new_str[i] != NULL)
 	{
 		if (check_count(new_str[i]) == 1 )

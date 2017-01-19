@@ -12,7 +12,28 @@
 
 #include "fillit.h"
 
+void free_pieces(char ***pieces)
+{
+	int i;
+	int j;
+	int size;
 
+	size = ft_arrlen((void **)pieces);
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			//printf("%d, %d\n", i, j);
+			ft_memdel((void **)&pieces[i][j]);
+			j++;
+		}
+		ft_memdel((void **)&pieces[i]);
+		i++;
+	}
+
+}
 
 char *read_file(char *file)
 {
@@ -41,7 +62,6 @@ int		main(int ac, char **av)
 {
 	char		*file;
 	char		***pieces;
-	int size;
 	t_map		*map;
 
 	if (ac == 2)
@@ -49,10 +69,11 @@ int		main(int ac, char **av)
 		file = read_file(av[1]);
 		if ((pieces = store_tetri(file)) == 0)
 			return (0);
-		size = ft_arrlen(ft_strsplitstr(file, "\n\n"));
 		map = start(pieces);
 		print_map(map);
 		free_map(map);
+		ft_memdel((void **)&file);
+		free_pieces(pieces);
 		return (1);
 	}
 	else

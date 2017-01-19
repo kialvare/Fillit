@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int 	ft_arrlen(char **arr)
+int 	ft_arrlen(void **arr)
 {
 	int i;
 

@@ -98,7 +98,7 @@ char	***store_tetri(char *raw_map)
 	{
 		i = 0;
 		str = ft_strsplitstr(raw_map, "\n\n");
-		len = ft_arrlen(str);
+		len = ft_arrlen((void **)str);
 		hash_to_alph(str, len);
 		pieces = ft_memalloc(sizeof(char **) * (len + 1));
 		while (i < len)
