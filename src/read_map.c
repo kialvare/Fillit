@@ -39,6 +39,7 @@ void		hash_to_alph(char **str, int len)
 void		put_error(void)
 {
 	ft_putendl("error");
+	exit (0);
 }
 
 char		***store_tetri(char *raw_map)

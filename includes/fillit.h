@@ -31,6 +31,7 @@ typedef struct		s_map
 ** main.c
 */
 char				*read_file(char *file);
+void				free_pieces(char ***pieces, char *file);
 
 /*
 ** convert.c

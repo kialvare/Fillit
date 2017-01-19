@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
 void	free_pieces(char ***pieces, char *file)
 {
@@ -43,7 +44,7 @@ char	*read_file(char *file)
 	char	buf[1];
 
 	i = 0;
-	if ((fd = open(file, O_RDONLY)) == -1)
+	if ((fd = open(file, O_RDONLY)) < 0)
 		ft_putendl("error");
 	while ((ret = read(fd, buf, 1)))
 	{
@@ -52,8 +53,7 @@ char	*read_file(char *file)
 			ft_putendl("error");
 	}
 	tmp[i] = '\0';
-	if (close(fd) == -1)
-		ft_putendl("error");
+	close(fd);
 	return (ft_strdup(tmp));
 }
 
@@ -66,13 +66,13 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		file = read_file(av[1]);
-		if ((pieces = store_tetri(file)) == 0)
-			return (0);
-		if (pieces[0] == '\0')
+		if (file[0] == '\0')
 		{
 			ft_putendl("error");
 			return (0);
 		}
+		if ((pieces = store_tetri(file)) == 0)
+			return (0);
 		map = start(pieces);
 		print_map(map);
 		free_map(map);
