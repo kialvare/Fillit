@@ -44,7 +44,7 @@ int		free_map(t_map *map)
 // 	int i;
 // 	int square;
 
-// 	i = 2;
+// 	i = 0;
 // 	while (i)
 // 	{
 // 		square = i * i;
@@ -55,15 +55,15 @@ int		free_map(t_map *map)
 // 	return (square);
 // }
 
-int smallest_square(int n)
-{
-	int size;
+// int smallest_square(int n)
+// {
+// 	int size;
 
-	size = 2;
-	while (size * size < n)
-		size++;
-	return (size);
-}
+// 	size = 2;
+// 	while (size * size < n)
+// 		size++;
+// 	return (size);
+// }
 
 /*
 ** After checking if we can place the piece on the map

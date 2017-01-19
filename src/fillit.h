@@ -46,7 +46,7 @@ int 					ft_valid(char *s);
 // void					place_piece(char **piece, t_map *map, int x, int y);
 // int						place_piece(char **piece, t_map *map);
 int 	solve(char ***pieces, int k, t_map *map, int size);
-t_map *start(char ***pieces, int count);
+t_map *start(char ***pieces);
 void place_piece(char **piece, t_map *map, int x, int y);
 t_map *reset(char **piece, t_map *map, int x, int y);
 int check_piece(char **piece, t_map *map, int x, int y);

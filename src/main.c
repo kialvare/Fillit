@@ -12,6 +12,8 @@
 
 #include "fillit.h"
 
+
+
 char *read_file(char *file)
 {
 	int fd;
@@ -48,9 +50,9 @@ int		main(int ac, char **av)
 		if ((pieces = store_tetri(file)) == 0)
 			return (0);
 		size = ft_arrlen(ft_strsplitstr(file, "\n\n"));
-		map = start(pieces, size);
+		map = start(pieces);
 		print_map(map);
-		//free_map(map);
+		free_map(map);
 		return (1);
 	}
 	else

@@ -23,8 +23,8 @@ t_map *reset(char **piece, t_map *map, int x, int y)
 		j = 0;
 		while (j < 4)
 		{
-			if (piece[i][j] != '.')
-				map->arr[x + i][y + j] = '.';
+			if (piece[j][i] != '.')
+				map->arr[y + j][x + i] = '.';
 			j++;
 		}
 		i++;
@@ -36,18 +36,25 @@ int check_piece(char **piece, t_map *map, int x, int y)
 {
 	int i;
 	int j;
-	int h;
-	int w;
+	// int h;
+	// int w;
 
-	h = find_height(piece);
-	w = find_width(piece);
+	// h = find_height(piece);
+	// w = find_width(piece);
 	i = 0;
-	while (i < w)
+	while (i < 4)
 	{
 		j = 0;
-		while (j < h)
+		while (j < 4)
 		{
-			if (ft_isupper(piece[j][i]) && map->arr[y + j][x + i] != '.')
+			//printf("Piece: %d, %d, %c\n", i, j, piece[j][i]);
+			//printf("Map: %d, %d, %d\n", y + j, x + i, map->size);
+			if (ft_isupper(piece[j][i]) && 
+				(((y + j) >= map->size  || 
+					(y + j) < 0 || 
+					(x + i) >= map->size || 
+					(x + i) < 0) ||
+					map->arr[y + j][x + i] != '.'))
 				return (0);
 			j++;
 		}
@@ -67,8 +74,8 @@ void	place_piece(char **piece, t_map *map, int x, int y)
 		j = 0;
 		while (j < 4)
 		{
-			if (piece[i][j] != '.')
-				map->arr[x + i][y + j] = piece[i][j];
+			if (piece[j][i] != '.')
+				map->arr[y + j][x + i] = piece[j][i];
 			j++;
 		}
 		i++;
@@ -80,17 +87,20 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 	int i;
 	int j;
 
-	j = 0;
+	j = -3;
 	if (pieces[k] == NULL)
 		return (1);
-	while (j < size - find_height(pieces[k]) + 1)
+	while (j < size + 3)
 	{
-		i = 0;
-		while (i < size - find_width(pieces[k]) + 1)
+		i = -3;
+		while (i < size + 3)
 		{
 			if (check_piece(pieces[k], map, i, j))
 			{
+				//printf("%d, %d, %d\n", k, i, j);
 				place_piece(pieces[k], map, i, j);
+				// print_map(map);
+				// printf("\n");
 				if (solve(pieces, k + 1, map, size))
 					return (1);
 				else
@@ -103,12 +113,12 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 	return (0);
 }
 
-t_map 	*start(char ***pieces, int count)
+t_map 	*start(char ***pieces)
 {
 	int size;
 	t_map *map;
 
-	size = smallest_square(count); // count is the number of pieces
+	size = 2; // count is the number of pieces
 	map = make_map(size);
 	while (!(solve(pieces, 0, map, size)))
 	{
