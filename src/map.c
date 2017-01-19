@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 /*
 ** ft_memdel or ft_lstdel/ft_lstdelone?
@@ -48,12 +48,12 @@ void	print_map(t_map *map)
 	}
 }
 
-/* 
+/*
 ** Allocates memory for smallest square
 ** Print out smallest square map
 */
 
-t_map			*make_map(int n)
+t_map	*make_map(int n)
 {
 	t_map	*map;
 	int		i;

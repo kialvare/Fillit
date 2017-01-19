@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
-void	free_pieces(char ***pieces)
+void	free_pieces(char ***pieces, char *file)
 {
 	int i;
 	int j;
@@ -31,13 +31,14 @@ void	free_pieces(char ***pieces)
 		ft_memdel((void **)&pieces[i]);
 		i++;
 	}
+	ft_memdel((void **)&file);
 }
 
-char		*read_file(char *file)
+char	*read_file(char *file)
 {
-	int 	fd;
-	int 	ret;
-	int 	i;
+	int		fd;
+	int		ret;
+	int		i;
 	char	tmp[545];
 	char	buf[1];
 
@@ -56,7 +57,7 @@ char		*read_file(char *file)
 	return (ft_strdup(tmp));
 }
 
-int			main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	char	*file;
 	char	***pieces;
@@ -67,7 +68,7 @@ int			main(int ac, char **av)
 		file = read_file(av[1]);
 		if ((pieces = store_tetri(file)) == 0)
 			return (0);
-		if (pieces == '\0' || pieces == "\n")
+		if (pieces[0] == '\0')
 		{
 			ft_putendl("error");
 			return (0);
@@ -75,8 +76,7 @@ int			main(int ac, char **av)
 		map = start(pieces);
 		print_map(map);
 		free_map(map);
-		ft_memdel((void **)&file);
-		free_pieces(pieces);
+		free_pieces(pieces, file);
 		return (1);
 	}
 	else

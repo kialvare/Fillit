@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 int		find_width(char **str)
 {
@@ -62,7 +62,7 @@ int		find_height(char **str)
 	return (height);
 }
 
-void 		hash_to_alph(char **str, int len)
+void	hash_to_alph(char **str, int len)
 {
 	int		i;
 	int		j;
@@ -86,7 +86,7 @@ void 		hash_to_alph(char **str, int len)
 	}
 }
 
-char		***store_tetri(char *raw_map)
+char	***store_tetri(char *raw_map)
 {
 	char	**str;
 	char	***pieces;

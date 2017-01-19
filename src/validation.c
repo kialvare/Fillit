@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 int		check_count(char *s)
 {
@@ -36,7 +36,7 @@ int		check_count(char *s)
 		return (0);
 }
 
-int 	count_tetri(char *s)
+int		count_tetri(char *s)
 {
 	int i;
 	int connection;
@@ -61,7 +61,7 @@ int 	count_tetri(char *s)
 	return (connection);
 }
 
-int 		ft_valid(char *s)
+int		ft_valid(char *s)
 {
 	int		i;
 	int		len;
@@ -75,7 +75,7 @@ int 		ft_valid(char *s)
 	while (new_str[i] != NULL)
 	{
 		if (check_count(new_str[i]) == 1)
-			if ((count_tetri(new_str[i]) == 6) || 
+			if ((count_tetri(new_str[i]) == 6) ||
 				(count_tetri(new_str[i]) == 8))
 				pieces++;
 		i++;

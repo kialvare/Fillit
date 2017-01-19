@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "libft/libft.h"
+#include "../includes/fillit.h"
 
 void		hash_to_alph(char **str, int len)
 {

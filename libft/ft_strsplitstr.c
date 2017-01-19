@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplitstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/19 08:31:31 by kialvare          #+#    #+#             */
+/*   Updated: 2017/01/19 08:34:34 by kialvare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int		ft_startswith(const char *str, const char *delim)
 {
 	size_t		i;
-	
+
 	i = 0;
-	while (i < ft_strlen(str)) 
+	while (i < ft_strlen(str))
 	{
 		if (delim[i] == '\0')
 			return (1);
@@ -31,7 +43,9 @@ static int		ft_wordcount(char const *s, char *delim)
 		{
 			prev = 0;
 			s += ft_strlen(delim) - 1;
-		} else if (prev == 0) {
+		}
+		else if (prev == 0)
+		{
 			prev = 1;
 			count++;
 		}
@@ -59,12 +73,9 @@ char			**ft_strsplitstr(char const *s, char *delim)
 	{
 		while (s[i] && ft_startswith(s + i, delim))
 			i += ft_strlen(delim);
-
 		begin = i;
-
 		while (s[i] && !ft_startswith(s + i, delim))
 			i++;
-
 		new_s[j] = ft_strsub(s, begin, i - begin);
 	}
 	new_s[j] = NULL;

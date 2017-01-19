@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/05 09:25:08 by kialvare          #+#    #+#             */
-/*   Updated: 2017/01/05 09:25:12 by kialvare         ###   ########.fr       */
+/*   Created: 2017/01/19 08:14:09 by kialvare          #+#    #+#             */
+/*   Updated: 2017/01/19 08:14:19 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 t_map	*reset(char **piece, t_map *map, int x, int y)
 {
@@ -44,7 +44,7 @@ int		check_piece(char **piece, t_map *map, int x, int y)
 		while (j < 4)
 		{
 			if (ft_isupper(piece[j][i]) &&
-				(((y + j) >= map->size  ||
+				(((y + j) >= map->size ||
 					(y + j) < 0 ||
 					(x + i) >= map->size ||
 					(x + i) < 0) ||
@@ -104,9 +104,9 @@ int		solve(char ***pieces, int k, t_map *map, int size)
 	return (0);
 }
 
-t_map		*start(char ***pieces)
+t_map	*start(char ***pieces)
 {
-	int 	size;
+	int		size;
 	t_map	*map;
 
 	size = 2;

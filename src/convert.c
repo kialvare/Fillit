@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 /*
 ** Converts the 1D string after checking validation into a 2D array
 */
 
-char	**allocate_array(char **str)
+char		**allocate_array(char **str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	str = malloc(4 * sizeof(char));
@@ -30,10 +30,10 @@ char	**allocate_array(char **str)
 	return (str);
 }
 
-char	**convert(char *str)
+char		**convert(char *str)
 {
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	char	**str1;
 
 	x = 0;
