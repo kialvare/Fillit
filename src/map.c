@@ -12,8 +12,8 @@
 
 #include "fillit.h"
 
-/* 
-** ft_memdel or ft_lstdel/ft_lstdelone? 
+/*
+** ft_memdel or ft_lstdel/ft_lstdelone?
 */
 
 int		free_map(t_map *map)
@@ -32,45 +32,11 @@ int		free_map(t_map *map)
 }
 
 /*
-** This function is similar to Math.ceil(Math.sqrt(4N)) in JavaScript
-** Smallest board size is 3 x 3
-** Except in the special cases of the square tetrimino (2 x 2)
-** And either the vertical or horizontal piece (4 x 4)
-*/
-
-// If there's only one piece and it's a square, make it 2 x 2?
-// int		smallest_square(int n)
-// {
-// 	int i;
-// 	int square;
-
-// 	i = 0;
-// 	while (i)
-// 	{
-// 		square = i * i;
-// 		if (n < square)
-// 			return (i * 2);
-// 		i++;
-// 	}
-// 	return (square);
-// }
-
-// int smallest_square(int n)
-// {
-// 	int size;
-
-// 	size = 2;
-// 	while (size * size < n)
-// 		size++;
-// 	return (size);
-// }
-
-/*
 ** After checking if we can place the piece on the map
 ** This sets the piece on the map
 */
 
-void		print_map(t_map *map)
+void	print_map(t_map *map)
 {
 	int i;
 
@@ -87,11 +53,11 @@ void		print_map(t_map *map)
 ** Print out smallest square map
 */
 
-t_map		*make_map(int n)
+t_map			*make_map(int n)
 {
-	t_map		*map;
-	int 		i;
-	int			j;
+	t_map	*map;
+	int		i;
+	int		j;
 
 	map = (t_map *)ft_memalloc(sizeof(t_map));
 	map->size = n;

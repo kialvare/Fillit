@@ -29,8 +29,8 @@ SRC=main.c \
 	algo.c \
 	convert.c \
 	map.c \
-	ft_strsplitstr.c \
 	ft_arrlen.c \
+	ft_strsplitstr.c \
 	validation.c 
 
 all: $(NAME)

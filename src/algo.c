@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                            :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-t_map *reset(char **piece, t_map *map, int x, int y)
+t_map	*reset(char **piece, t_map *map, int x, int y)
 {
 	int i;
 	int j;
@@ -32,27 +32,21 @@ t_map *reset(char **piece, t_map *map, int x, int y)
 	return (map);
 }
 
-int check_piece(char **piece, t_map *map, int x, int y)
+int		check_piece(char **piece, t_map *map, int x, int y)
 {
 	int i;
 	int j;
-	// int h;
-	// int w;
 
-	// h = find_height(piece);
-	// w = find_width(piece);
 	i = 0;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 4)
 		{
-			//printf("Piece: %d, %d, %c\n", i, j, piece[j][i]);
-			//printf("Map: %d, %d, %d\n", y + j, x + i, map->size);
-			if (ft_isupper(piece[j][i]) && 
-				(((y + j) >= map->size  || 
-					(y + j) < 0 || 
-					(x + i) >= map->size || 
+			if (ft_isupper(piece[j][i]) &&
+				(((y + j) >= map->size  ||
+					(y + j) < 0 ||
+					(x + i) >= map->size ||
 					(x + i) < 0) ||
 					map->arr[y + j][x + i] != '.'))
 				return (0);
@@ -82,7 +76,7 @@ void	place_piece(char **piece, t_map *map, int x, int y)
 	}
 }
 
-int 	solve(char ***pieces, int k, t_map *map, int size)
+int		solve(char ***pieces, int k, t_map *map, int size)
 {
 	int i;
 	int j;
@@ -97,10 +91,7 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 		{
 			if (check_piece(pieces[k], map, i, j))
 			{
-				//printf("%d, %d, %d\n", k, i, j);
 				place_piece(pieces[k], map, i, j);
-				// print_map(map);
-				// printf("\n");
 				if (solve(pieces, k + 1, map, size))
 					return (1);
 				else
@@ -113,12 +104,12 @@ int 	solve(char ***pieces, int k, t_map *map, int size)
 	return (0);
 }
 
-t_map 	*start(char ***pieces)
+t_map		*start(char ***pieces)
 {
-	int size;
-	t_map *map;
+	int 	size;
+	t_map	*map;
 
-	size = 2; // count is the number of pieces
+	size = 2;
 	map = make_map(size);
 	while (!(solve(pieces, 0, map, size)))
 	{

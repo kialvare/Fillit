@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
 
 int		find_width(char **str)
 {
@@ -30,7 +29,7 @@ int		find_width(char **str)
 		{
 			if (ft_isupper(str[i][j]) || str[i][j] != '.')
 				width++;
-			j++; 
+			j++;
 		}
 		if (width > hold)
 			hold = width;
@@ -63,11 +62,11 @@ int		find_height(char **str)
 	return (height);
 }
 
-void 	hash_to_alph(char **str, int len)
+void 		hash_to_alph(char **str, int len)
 {
-	int i;
-	int j;
-	char c;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
 	c = 'A';
@@ -87,12 +86,12 @@ void 	hash_to_alph(char **str, int len)
 	}
 }
 
-char	***store_tetri(char *raw_map)
+char		***store_tetri(char *raw_map)
 {
 	char	**str;
-	char ***pieces;
-	int i;
-	int len;
+	char	***pieces;
+	int		i;
+	int		len;
 
 	if (ft_valid(raw_map) == 1)
 	{
@@ -106,7 +105,7 @@ char	***store_tetri(char *raw_map)
 			pieces[i] = ft_strsplitstr(str[i], "\n");
 			i++;
 		}
-		return(pieces);
+		return (pieces);
 	}
 	else
 	{

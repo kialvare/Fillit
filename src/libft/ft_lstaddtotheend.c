@@ -12,13 +12,6 @@
 
 #include "libft.h"
 
-/*
-** We add the link the the end of the list.
-** We need to make sure that our add-link is not NULL so we set it to new in case that it is.
-** Otherwise, we create a while loop where it will always point to the next struct.
-** 
-*/
-
 void	ft_lstaddtotheend(t_list **alst, t_list *new)
 {
 	t_list		*tmp;

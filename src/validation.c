@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	check_count(char *s)
+int		check_count(char *s)
 {
 	int i;
 	int hashes;
@@ -36,7 +36,7 @@ int	check_count(char *s)
 		return (0);
 }
 
-int count_tetri(char *s)
+int 	count_tetri(char *s)
 {
 	int i;
 	int connection;
@@ -61,12 +61,12 @@ int count_tetri(char *s)
 	return (connection);
 }
 
-int ft_valid(char *s)
+int 		ft_valid(char *s)
 {
-	int i;
-	int len;
-	int pieces;
-	char **new_str;
+	int		i;
+	int		len;
+	int		pieces;
+	char	**new_str;
 
 	i = 0;
 	pieces = 0;
@@ -74,8 +74,9 @@ int ft_valid(char *s)
 	len = ft_arrlen((void **)new_str);
 	while (new_str[i] != NULL)
 	{
-		if (check_count(new_str[i]) == 1 )
-			if ((count_tetri(new_str[i]) == 6) || (count_tetri(new_str[i]) == 8))
+		if (check_count(new_str[i]) == 1)
+			if ((count_tetri(new_str[i]) == 6) || 
+				(count_tetri(new_str[i]) == 8))
 				pieces++;
 		i++;
 	}

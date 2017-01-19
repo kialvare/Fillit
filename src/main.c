@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-void free_pieces(char ***pieces)
+void	free_pieces(char ***pieces)
 {
 	int i;
 	int j;
@@ -25,28 +25,26 @@ void free_pieces(char ***pieces)
 		j = 0;
 		while (j < 4)
 		{
-			//printf("%d, %d\n", i, j);
 			ft_memdel((void **)&pieces[i][j]);
 			j++;
 		}
 		ft_memdel((void **)&pieces[i]);
 		i++;
 	}
-
 }
 
-char *read_file(char *file)
+char		*read_file(char *file)
 {
-	int fd;
-	int ret;
-	int i;
-	char tmp[545];
-	char buf[1];
+	int 	fd;
+	int 	ret;
+	int 	i;
+	char	tmp[545];
+	char	buf[1];
 
 	i = 0;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		ft_putendl("error");
-	while((ret = read(fd, buf, 1)))
+	while ((ret = read(fd, buf, 1)))
 	{
 		tmp[i++] = buf[0];
 		if (i > 545)
@@ -55,20 +53,25 @@ char *read_file(char *file)
 	tmp[i] = '\0';
 	if (close(fd) == -1)
 		ft_putendl("error");
-	return(ft_strdup(tmp));
+	return (ft_strdup(tmp));
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	char		*file;
-	char		***pieces;
-	t_map		*map;
+	char	*file;
+	char	***pieces;
+	t_map	*map;
 
 	if (ac == 2)
 	{
 		file = read_file(av[1]);
 		if ((pieces = store_tetri(file)) == 0)
 			return (0);
+		if (pieces == '\0' || pieces == "\n")
+		{
+			ft_putendl("error");
+			return (0);
+		}
 		map = start(pieces);
 		print_map(map);
 		free_map(map);

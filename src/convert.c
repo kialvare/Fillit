@@ -30,11 +30,11 @@ char	**allocate_array(char **str)
 	return (str);
 }
 
-char **convert(char *str)
+char	**convert(char *str)
 {
-	int x;
-	int y;
-	char **str1;
+	int 	x;
+	int 	y;
+	char	**str1;
 
 	x = 0;
 	str1 = NULL;
