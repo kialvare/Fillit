@@ -6,7 +6,7 @@
 #    By: kialvare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/05 09:24:44 by kialvare          #+#    #+#              #
-#    Updated: 2017/01/05 09:25:00 by kialvare         ###   ########.fr        #
+#    Updated: 2017/01/19 15:25:48 by kialvare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ LDLIBS=-lft
 SRC=src/main.c \
 	src/store.c \
 	src/algo.c \
-	src/convert.c \
 	src/map.c \
 	src/ft_arrlen.c \
 	src/ft_strsplitstr.c \

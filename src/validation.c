@@ -11,26 +11,32 @@
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
 int		check_count(char *s)
 {
 	int i;
 	int hashes;
+	int newline;
 
 	i = 0;
 	hashes = 0;
+	newline = 0;
 	while (s[i] != '\0')
 	{
 		if ((s[i] == '.') || (s[i] == '#') || (s[i] == '\n'))
 		{
 			if (s[i] == '#')
 				hashes++;
+			if (s[i] == '\n')
+				newline++;
+			//printf("%d\n", newline);
 			i++;
 		}
 		else
 			return (1);
 	}
-	if (i == 19 && hashes == 4)
+	if ((i == 20 || i == 19) && hashes == 4 && (newline == 3 || newline == 4))
 		return (1);
 	else
 		return (0);
@@ -61,6 +67,24 @@ int		count_tetri(char *s)
 	return (connection);
 }
 
+int 	count_newlines(char *s)
+{
+	int i;
+	int newline;
+
+	i = 0;
+	newline = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '\n')
+			newline++;
+		i++;
+	}
+	if (newline % 5 == 0)
+		return (0);
+	return (1);
+}
+
 int		ft_valid(char *s)
 {
 	int		i;
@@ -72,6 +96,8 @@ int		ft_valid(char *s)
 	pieces = 0;
 	new_str = ft_strsplitstr(s, "\n\n");
 	len = ft_arrlen((void **)new_str);
+	if (count_newlines(s) == 0)
+		return (0);
 	while (new_str[i] != NULL)
 	{
 		if (check_count(new_str[i]) == 1)

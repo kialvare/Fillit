@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
 static int		ft_startswith(const char *str, const char *delim)
 {
@@ -81,3 +82,23 @@ char			**ft_strsplitstr(char const *s, char *delim)
 	new_s[j] = NULL;
 	return (new_s);
 }
+
+// int main(void)
+// {
+// 	char *str;
+// 	//char **str1 = 
+	
+// 	str = "....\n##..\n.#..\n.#..\n\n....\n####\n....\n....\n";
+
+// 	....\n
+// 	##..\n
+// 	.#..\n
+// 	.#..\n
+// 	....\n
+// 	####\n
+// 	....\n
+// 	....\n
+
+// 	ft_strsplitstr(str, "\n\n");
+// 	printf("%s\n", str);
+// }
