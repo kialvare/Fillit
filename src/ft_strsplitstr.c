@@ -6,12 +6,11 @@
 /*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 08:13:42 by kialvare          #+#    #+#             */
-/*   Updated: 2017/01/19 08:13:46 by kialvare         ###   ########.fr       */
+/*   Updated: 2017/01/24 18:37:18 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 static int		ft_startswith(const char *str, const char *delim)
 {
@@ -82,23 +81,3 @@ char			**ft_strsplitstr(char const *s, char *delim)
 	new_s[j] = NULL;
 	return (new_s);
 }
-
-// int main(void)
-// {
-// 	char *str;
-// 	//char **str1 = 
-	
-// 	str = "....\n##..\n.#..\n.#..\n\n....\n####\n....\n....\n";
-
-// 	....\n
-// 	##..\n
-// 	.#..\n
-// 	.#..\n
-// 	....\n
-// 	####\n
-// 	....\n
-// 	....\n
-
-// 	ft_strsplitstr(str, "\n\n");
-// 	printf("%s\n", str);
-// }

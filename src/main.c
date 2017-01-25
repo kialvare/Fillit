@@ -6,12 +6,11 @@
 /*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 09:25:41 by kialvare          #+#    #+#             */
-/*   Updated: 2017/01/05 09:25:50 by kialvare         ###   ########.fr       */
+/*   Updated: 2017/01/24 18:37:49 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 void	free_pieces(char ***pieces, char *file)
 {
@@ -44,7 +43,7 @@ char	*read_file(char *file)
 	char	buf[1];
 
 	i = 0;
-	if ((fd = open(file, O_RDONLY)) < 0)
+	if ((fd = open(file, O_RDONLY)) == -1)
 		ft_putendl("error");
 	while ((ret = read(fd, buf, 1)))
 	{
@@ -84,5 +83,4 @@ int		main(int ac, char **av)
 		ft_putendl("usage: ./fillit target_file");
 		return (0);
 	}
-	return (1);
 }

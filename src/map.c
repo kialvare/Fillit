@@ -6,15 +6,11 @@
 /*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 09:25:57 by kialvare          #+#    #+#             */
-/*   Updated: 2017/01/05 09:26:09 by kialvare         ###   ########.fr       */
+/*   Updated: 2017/01/24 18:35:08 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-/*
-** ft_memdel or ft_lstdel/ft_lstdelone?
-*/
 
 int		free_map(t_map *map)
 {
@@ -31,11 +27,6 @@ int		free_map(t_map *map)
 	return (0);
 }
 
-/*
-** After checking if we can place the piece on the map
-** This sets the piece on the map
-*/
-
 void	print_map(t_map *map)
 {
 	int i;
@@ -47,11 +38,6 @@ void	print_map(t_map *map)
 		i++;
 	}
 }
-
-/*
-** Allocates memory for smallest square
-** Print out smallest square map
-*/
 
 t_map	*make_map(int n)
 {

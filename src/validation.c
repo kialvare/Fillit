@@ -6,12 +6,11 @@
 /*   By: kialvare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 21:13:14 by kialvare          #+#    #+#             */
-/*   Updated: 2017/01/12 21:13:23 by kialvare         ###   ########.fr       */
+/*   Updated: 2017/01/24 18:37:38 by kialvare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 int		check_count(char *s)
 {
@@ -30,7 +29,6 @@ int		check_count(char *s)
 				hashes++;
 			if (s[i] == '\n')
 				newline++;
-			//printf("%d\n", newline);
 			i++;
 		}
 		else
@@ -67,7 +65,7 @@ int		count_tetri(char *s)
 	return (connection);
 }
 
-int 	count_newlines(char *s)
+int		count_newlines(char *s)
 {
 	int i;
 	int newline;
