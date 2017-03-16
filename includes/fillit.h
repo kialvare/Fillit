@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <stdio.h> // DELETE THIS AT THE END THO
 
 /*
 ** MAP
@@ -39,6 +40,7 @@ void				free_pieces(char ***pieces, char *file);
 int					count_tetri(char *s);
 int					check_count(char *s);
 int					ft_valid(char *s);
+int 				count_newlines(char *s);
 
 /*
 ** algo3.c
@@ -63,12 +65,5 @@ t_map				*make_map(int n);
 
 char				***store_tetri(char *raw_map);
 void				hash_to_alph(char **str, int len);
-
-/*
-** Libft funcs
-*/
-
-char				**ft_strsplitstr(char const *s, char *delim);
-int					ft_arrlen(void **arr);
 
 #endif

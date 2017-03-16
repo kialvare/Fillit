@@ -12,15 +12,38 @@
 
 #include "../includes/fillit.h"
 
+int count_newlines(char *s)
+{
+	int i;
+	int newline;
+	int ans;
+
+	i = 0;
+	newline = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '\n')
+			newline++;
+		i++;
+	}
+	ans = 1 * (i / 4) + 1;
+	if (ans == newline)
+		return (0);
+	else
+		return (1);
+}
+
 int		check_count(char *s)
 {
 	int i;
 	int hashes;
 	int newline;
+	int period;
 
 	i = 0;
 	hashes = 0;
 	newline = 0;
+	period = 0;
 	while (s[i] != '\0')
 	{
 		if ((s[i] == '.') || (s[i] == '#') || (s[i] == '\n'))
@@ -29,15 +52,17 @@ int		check_count(char *s)
 				hashes++;
 			if (s[i] == '\n')
 				newline++;
+			if (s[i] == '.')
+				period++;
 			i++;
 		}
 		else
 			return (1);
 	}
-	if ((i == 20 || i == 19) && hashes == 4 && (newline == 3 || newline == 4))
-		return (1);
-	else
+	if (i == 19 && hashes == 4 && newline == 3)
 		return (0);
+	else
+		return (1);
 }
 
 int		count_tetri(char *s)
@@ -65,24 +90,6 @@ int		count_tetri(char *s)
 	return (connection);
 }
 
-int		count_newlines(char *s)
-{
-	int i;
-	int newline;
-
-	i = 0;
-	newline = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == '\n')
-			newline++;
-		i++;
-	}
-	if (newline % 5 == 0)
-		return (0);
-	return (1);
-}
-
 int		ft_valid(char *s)
 {
 	int		i;
@@ -94,17 +101,15 @@ int		ft_valid(char *s)
 	pieces = 0;
 	new_str = ft_strsplitstr(s, "\n\n");
 	len = ft_arrlen((void **)new_str);
-	if (count_newlines(s) == 0)
-		return (0);
 	while (new_str[i] != NULL)
 	{
-		if (check_count(new_str[i]) == 1)
+		if (check_count(new_str[i]) == 0)
 			if ((count_tetri(new_str[i]) == 6) ||
 				(count_tetri(new_str[i]) == 8))
 				pieces++;
 		i++;
 	}
 	if (pieces != len || pieces > 26)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }

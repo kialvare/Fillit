@@ -28,8 +28,6 @@ SRC=src/main.c \
 	src/store.c \
 	src/algo.c \
 	src/map.c \
-	src/ft_arrlen.c \
-	src/ft_strsplitstr.c \
 	src/validation.c 
 
 all: $(NAME)

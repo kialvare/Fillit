@@ -52,7 +52,7 @@ char	*read_file(char *file)
 	{
 		tmp[i++] = buf[0];
 		if (i > 545)
-			ft_putendl("error");
+			break ;
 	}
 	tmp[i] = '\0';
 	close(fd);
@@ -73,13 +73,18 @@ int		main(int ac, char **av)
 			ft_putendl("error");
 			return (0);
 		}
+		if (count_newlines(file) == 0)
+		{
+			ft_putendl("error");
+			return (0);
+		}
 		if ((pieces = store_tetri(file)) == 0)
 			return (0);
 		map = start(pieces);
 		print_map(map);
 		free_map(map);
 		free_pieces(pieces, file);
-		return (1);
+		return (0);
 	}
 	else
 	{
