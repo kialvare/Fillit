@@ -113,7 +113,6 @@ t_map	*start(char ***pieces)
 	map = make_map(size);
 	while (!(solve(pieces, 0, map, size)))
 	{
-		printf("Does it go in here?\n");
 		size++;
 		free_map(map);
 		map = make_map(size);

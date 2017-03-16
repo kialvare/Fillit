@@ -27,10 +27,18 @@ int count_newlines(char *s)
 		i++;
 	}
 	ans = 1 * (i / 4) + 1;
-	if (ans == newline)
+	printf("%d\n", ans);
+	printf("%d\n", (newline + 2));
+	if (ans == (newline + 2))
+	{
+		printf("Does it pass\n");
 		return (0);
+	}
 	else
+	{
+		ft_putendl("error");
 		return (1);
+	}
 }
 
 int		check_count(char *s)

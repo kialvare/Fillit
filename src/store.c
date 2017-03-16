@@ -59,7 +59,6 @@ char	***store_tetri(char *raw_map)
 	}
 	else
 	{
-		printf("i bet it goes through here\n");
 		ft_putendl("error");
 		return (0);
 	}
