@@ -16,7 +16,7 @@ int count_newlines(char *s)
 {
 	int i;
 	int newline;
-	int ans;
+	int numerator;
 
 	i = 0;
 	newline = 0;
@@ -26,12 +26,18 @@ int count_newlines(char *s)
 			newline++;
 		i++;
 	}
-	ans = 1 * (i / 4) + 1;
-	printf("%d\n", ans);
-	printf("%d\n", (newline + 2));
-	if (ans == (newline + 2))
+	numerator = (5 * i) - 16;
+	printf("%d\n", i);
+	printf("numerator: %d\n", numerator);
+	printf("numerator / 21: %d\n", numerator / 21);
+	printf("numerator mod 21: %d\n", numerator % 21);
+	if (numerator % 21 != 0)
 	{
-		printf("Does it pass\n");
+		ft_putendl("error");
+		return (1);
+	}
+	if (numerator / 21 == newline)
+	{
 		return (0);
 	}
 	else
