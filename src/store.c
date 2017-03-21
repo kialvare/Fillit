@@ -36,17 +36,17 @@ void	hash_to_alph(char **str, int len)
 	}
 }
 
-char	***store_tetri(char *raw_map)
+char	***store_tetri(char *file)
 {
 	char	**str;
 	char	***pieces;
 	int		i;
 	int		len;
 
-	if (ft_valid(raw_map) == 1)
+	if (ft_valid(file) == 1)
 	{
 		i = 0;
-		str = ft_strsplitstr(raw_map, "\n\n");
+		str = ft_strsplitstr(file, "\n\n");
 		len = ft_arrlen((void **)str);
 		hash_to_alph(str, len);
 		pieces = ft_memalloc(sizeof(char **) * (len + 1));

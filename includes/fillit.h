@@ -37,10 +37,10 @@ void				free_pieces(char ***pieces, char *file);
 /*
 ** validation.c
 */
-int					count_tetri(char *s);
-int					check_count(char *s);
-int					ft_valid(char *s);
-int 				count_newlines(char *s);
+int					count_tetri(char *file);
+int					check_count(char *file);
+int					ft_valid(char *file);
+int 				count_newlines(char *file);
 
 /*
 ** algo3.c
@@ -63,7 +63,7 @@ t_map				*make_map(int n);
 ** store.c
 */
 
-char				***store_tetri(char *raw_map);
+char				***store_tetri(char *file);
 void				hash_to_alph(char **str, int len);
 
 #endif

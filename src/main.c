@@ -73,16 +73,13 @@ int		main(int ac, char **av)
 			ft_putendl("error");
 			return (0);
 		}
-		if (count_newlines(file) == 0)
-		{
-			if ((pieces = store_tetri(file)) == 0)
-				return (0);
-			map = start(pieces);
-			print_map(map);
-			free_map(map);
-			free_pieces(pieces, file);
+		if ((pieces = store_tetri(file)) == 0)
 			return (0);
-		}
+		map = start(pieces);
+		print_map(map);
+		free_map(map);
+		free_pieces(pieces, file);
+		return (0);
 	}
 	else
 	{
