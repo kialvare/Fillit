@@ -43,7 +43,7 @@ char	***store_tetri(char *file)
 	int		i;
 	int		len;
 
-	if (ft_valid(file) == 1)
+	if (ft_valid(file) == 0)
 	{
 		i = 0;
 		str = ft_strsplitstr(file, "\n\n");

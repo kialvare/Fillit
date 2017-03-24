@@ -29,9 +29,9 @@ int		count_newlines(char *file)
 	numerator = (5 * i) - 16;
 	// if (numerator % 21 != 0)
 	// 	return (1);
-	printf("numerator: %d\n", numerator);
-	printf("numerator / 21:%d\n", numerator / 21);
-	printf("numerator mod 21: %d\n", numerator % 21);
+	// printf("numerator: %d\n", numerator);
+	// printf("numerator / 21: %d\n", numerator / 21);
+	// printf("numerator mod 21: %d\n", numerator % 21);
 	if (numerator / 21 == newline && numerator % 21 == 0)
 		return (0);
 	else
@@ -76,10 +76,10 @@ int		check_count(char *file)
 		else
 			return (1);
 	}
-	printf("i: %d\n", i);
-	printf("Hashes: %d\n", hashes);
-	printf("Newlines: %d\n", newline);
-	printf("Period: %d\n", period);
+	// printf("i: %d\n", i);
+	// printf("Hashes: %d\n", hashes);
+	// printf("Newlines: %d\n", newline);
+	// printf("Period: %d\n", period);
 	if (i == 20 && hashes == 4 && newline == 4 && period == 12)
 	{
 		//printf("Catches error?\n");
@@ -100,7 +100,7 @@ int		count_tetri(char *file)
 	{
 		if (file[i] == '#')
 		{
-			//printf("Does it even go in here\n");
+			printf("Does it even go in here\n");
 			if ((i + 1) < 19 && file[i + 1] == '#')
 				connection++;
 			if ((i - 1) >= 0 && file[i - 1] == '#')
@@ -137,14 +137,15 @@ int		ft_valid(char *file)
 			// printf("Does it even pass through here\n");
 			if (count_tetri(new_str[i]) == 0)
 			{
-				printf("Do you even spoon bro\n");
+				// printf("Do you even spoon bro\n");
 				// printf("%d\n", count_tetri(new_str[i]));
 				pieces++;
 			}
 			else
 			{
-				printf("Does it pass here\n");
-				return (1);
+				//printf("Does it pass here\n");
+				ft_putendl("error\n");
+				//return (1);
 				break ;
 			}
 		}
