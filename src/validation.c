@@ -27,15 +27,19 @@ int		count_newlines(char *file)
 		i++;
 	}
 	numerator = (5 * i) - 16;
-	// if (numerator % 21 != 0)
-	// 	return (1);
-	// printf("numerator: %d\n", numerator);
-	// printf("numerator / 21: %d\n", numerator / 21);
-	// printf("numerator mod 21: %d\n", numerator % 21);
+	printf("numerator: %d\n", numerator);
+	printf("numerator / 21: %d\n", numerator / 21);
+	printf("numerator mod 21: %d\n", numerator % 21);
 	if (numerator / 21 == newline && numerator % 21 == 0)
+	{
+		printf("How bout here\n");
 		return (0);
+	}
 	else
+	{
+		printf("or here\n");
 		return (1);
+	}
 }
 
 int		check_count(char *file)
@@ -56,37 +60,27 @@ int		check_count(char *file)
 		{
 			//printf("Does it even go in here\n");
 			if (file[i] == '#')
-			{
-				// printf("Hashes: %d\n", hashes);
 				hashes++;
-			}
 			if (file[i] == '\n')
-			{
-				// printf("Newlines: %d\n", newline);
 				newline++;
-			}
 			if (file[i] == '.')
-			{
-				// printf("Period: %d\n", period);
 				period++;
-			}
-			// printf("i: %d\n", i);
 			i++;
 		}
 		else
 			return (1);
 	}
-	// printf("i: %d\n", i);
-	// printf("Hashes: %d\n", hashes);
-	// printf("Newlines: %d\n", newline);
-	// printf("Period: %d\n", period);
-	if (i == 20 && hashes == 4 && newline == 4 && period == 12)
-	{
-		//printf("Catches error?\n");
+	printf("i: %d\n", i);
+	printf("Hashes: %d\n", hashes);
+	printf("Newlines: %d\n", newline);
+	printf("Period: %d\n", period);
+	if ((i == 19 || i == 20) && hashes == 4 && newline == 4 && period == 12)
 		return (0);
-	}
 	else
+	{
+		printf("Something something\n");
 		return (1);
+	}
 }
 
 int		count_tetri(char *file)
@@ -100,7 +94,6 @@ int		count_tetri(char *file)
 	{
 		if (file[i] == '#')
 		{
-			printf("Does it even go in here\n");
 			if ((i + 1) < 19 && file[i + 1] == '#')
 				connection++;
 			if ((i - 1) >= 0 && file[i - 1] == '#')
@@ -112,7 +105,6 @@ int		count_tetri(char *file)
 		}
 		i++;
 	}
-	printf("Connection: %d\n", connection);
 	if (connection == 6 || connection == 8)
 		return (0);
 	else
@@ -132,21 +124,13 @@ int		ft_valid(char *file)
 	len = ft_arrlen((void **)new_str);
 	while (new_str[i] != NULL)
 	{
-		if (count_newlines(new_str[i]) == 0 && check_count(new_str[i]) == 0)
+		if (check_count(new_str[i]) == 0)
 		{
 			// printf("Does it even pass through here\n");
 			if (count_tetri(new_str[i]) == 0)
 			{
-				// printf("Do you even spoon bro\n");
 				// printf("%d\n", count_tetri(new_str[i]));
 				pieces++;
-			}
-			else
-			{
-				//printf("Does it pass here\n");
-				ft_putendl("error\n");
-				//return (1);
-				break ;
 			}
 		}
 		i++;
@@ -154,5 +138,8 @@ int		ft_valid(char *file)
 	if (pieces != len || pieces > 26)
 		return (1);
 	else
+	{
+		printf("what dis be\n");
 		return (0);
+	}
 }
