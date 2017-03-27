@@ -27,18 +27,11 @@ int		count_newlines(char *file)
 		i++;
 	}
 	numerator = (5 * i) - 16;
-	printf("Numerator / 21: %d\n", numerator / 21);
-	printf("Numerator mod 21: %d\n", numerator % 21);
-	if (numerator / 21 == newline && numerator % 21 == 0)
-	{
-		printf("ahh\n");
-		return (0);
-	}
-	else
-	{
-		printf("ahh2\n");
+	if (numerator % 21 != 0)
 		return (1);
-	}
+	if (numerator / 21 == newline)
+		return (0);
+	return (1);
 }
 
 int		check_count(char *file)
@@ -54,7 +47,6 @@ int		check_count(char *file)
 	period = 0;
 	while (file[i] != '\0')
 	{
-		// printf("the ultimate test\n");
 		if ((file[i] == '.') || (file[i] == '#') || (file[i] == '\n'))
 		{
 			if (file[i] == '#')
@@ -66,20 +58,8 @@ int		check_count(char *file)
 			i++;
 		}
 	}
-	printf("i: %d\n", i);
-	printf("hashes: %d\n", hashes);
-	printf("newlines: %d\n", newline);
-	printf("period: %d\n", period);
 	if ((i == 19 || i == 20) && hashes == 4 && (newline == 3 || newline == 4) && period == 12)
-	{
-		printf("test\n");
-		// printf("i: %d\n", i);
-		// printf("hashes: %d\n", hashes);
-		// printf("newlines: %d\n", newline);
-		// printf("period: %d\n", period);
 		return (0);
-	}
-	printf("It shouldn't go here\n");
 	return (1);
 }
 
@@ -123,18 +103,13 @@ int		ft_valid(char *file)
 	new_str = ft_strsplitstr(file, "\n\n");
 	while (new_str[i] != NULL)
 	{
-		printf("why\n");
 		if (check_count(new_str[i]) == 0 && count_newlines(new_str[i]) == 0)
 		{
-			printf("but why tho\n");
 			if (count_tetri(new_str[i]) == 0)
-			{
 				pieces++;
-			}
 		}
 		else
 		{
-			printf("test2\n");
 			ft_putendl("error");
 			return (1);
 		}
