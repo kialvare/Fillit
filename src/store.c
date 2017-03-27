@@ -58,10 +58,5 @@ char	***store_tetri(char *file)
 		}
 		return (pieces);
 	}
-	else
-	{
-		// printf("Is it this error?\n");
-		ft_putendl("error");
-		return (0);
-	}
+	return (0);
 }
