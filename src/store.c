@@ -58,9 +58,5 @@ char	***store_tetri(char *file)
 		}
 		return (pieces);
 	}
-	else
-	{
-		ft_putendl("error");
-		return (0);
-	}
+	return (0);
 }

@@ -27,13 +27,11 @@ int		count_newlines(char *file)
 		i++;
 	}
 	numerator = (5 * i) - 16;
-	printf("i: %d\n", i);
-	printf("numerator: %d\n", numerator);
-	printf("newline: %d\n", newline);
-	if (numerator / 21 == newline && numerator % 21 == 0)
-		return (0);
-	else
+	if (numerator % 21 != 0)
 		return (1);
+	if (numerator / 21 == newline)
+		return (0);
+	return (1);
 }
 
 int		check_count(char *file)
@@ -43,26 +41,22 @@ int		check_count(char *file)
 	int newline;
 	int period;
 
-	i = 0;
+	i = 1;
 	hashes = 0;
 	newline = 0;
 	period = 0;
 	while (file[i] != '\0')
 	{
-		if ((file[i] == '.') || (file[i] == '#') || (file[i] == '\n'))
-		{
-			if (file[i] == '#')
-				hashes++;
-			if (file[i] == '\n')
-				newline++;
-			if (file[i] == '.')
-				period++;
-			i++;
-		}
-		else
-			return (1);
+		file[i] == '#' ? hashes++ : 1;
+		file[i] == '\n' ? newline++ : 1;
+		file[i] == '.' ? period++ : 1;
+		i++;
 	}
-	if (i == 20 && hashes == 4 && newline == 4 && period == 12)
+	printf("i: %d\n", i);
+	printf("hashes: %d\n", hashes);
+	printf("newline: %d\n", newline);
+	printf("period: %d\n", period);
+	if (i == 20 && hashes == 4 && (newline == 3 || newline == 4) && period == 12)
 		return (0);
 	return (1);
 }
@@ -72,7 +66,7 @@ int		count_tetri(char *file)
 	int i;
 	int connection;
 
-	i = 0;
+	i = 0; 
 	connection = 0;
 	while (file[i] != '\0')
 	{
@@ -107,14 +101,15 @@ int		ft_valid(char *file)
 	new_str = ft_strsplitstr(file, "\n\n");
 	while (new_str[i] != NULL)
 	{
-		if (count_newlines(new_str[i]) == 0)
+		if (check_count(new_str[i]) == 0 && count_newlines(new_str[i]) == 0)
 		{
-			printf("Does it go in here tho\n");
-			if (check_count(new_str[i]) == 0)
-			{
-				if (count_tetri(new_str[i]) == 0)
-					pieces++;
-			}
+			if (count_tetri(new_str[i]) == 0)
+				pieces++;
+		}
+		else
+		{
+			ft_putendl("error");
+			return (1);
 		}
 		else
 			return (1);
@@ -122,5 +117,6 @@ int		ft_valid(char *file)
 	}
 	if (pieces > 26)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

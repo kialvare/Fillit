@@ -74,7 +74,10 @@ int		main(int ac, char **av)
 			return (0);
 		}
 		if ((pieces = store_tetri(file)) == 0)
+		{
+			printf("Probably went through here\n");
 			return (0);
+		}
 		map = start(pieces);
 		print_map(map);
 		free_map(map);
@@ -84,6 +87,6 @@ int		main(int ac, char **av)
 	else
 	{
 		ft_putendl("usage: ./fillit target_file");
-		return (0);
+		return (1);
 	}
 }
