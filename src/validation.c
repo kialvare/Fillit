@@ -41,24 +41,22 @@ int		check_count(char *file)
 	int newline;
 	int period;
 
-	i = 0;
+	i = 1;
 	hashes = 0;
 	newline = 0;
 	period = 0;
 	while (file[i] != '\0')
 	{
-		if ((file[i] == '.') || (file[i] == '#') || (file[i] == '\n'))
-		{
-			if (file[i] == '#')
-				hashes++;
-			if (file[i] == '\n')
-				newline++;
-			if (file[i] == '.')
-				period++;
-			i++;
-		}
+		file[i] == '#' ? hashes++ : 1;
+		file[i] == '\n' ? newline++ : 1;
+		file[i] == '.' ? period++ : 1;
+		i++;
 	}
-	if ((i == 19 || i == 20) && hashes == 4 && (newline == 3 || newline == 4) && period == 12)
+	printf("i: %d\n", i);
+	printf("hashes: %d\n", hashes);
+	printf("newline: %d\n", newline);
+	printf("period: %d\n", period);
+	if (i == 20 && hashes == 4 && (newline == 3 || newline == 4) && period == 12)
 		return (0);
 	return (1);
 }
@@ -68,7 +66,7 @@ int		count_tetri(char *file)
 	int i;
 	int connection;
 
-	i = 0;
+	i = 0; 
 	connection = 0;
 	while (file[i] != '\0')
 	{
