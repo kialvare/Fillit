@@ -60,7 +60,6 @@ char	***store_tetri(char *file)
 	}
 	else
 	{
-		// printf("Is it this error?\n");
 		ft_putendl("error");
 		return (0);
 	}
