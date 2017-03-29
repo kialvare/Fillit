@@ -105,8 +105,6 @@ int		ft_valid(char *file)
 					pieces++;
 				else
 					return (1);
-				// count_tetri(new_str[i]) == 6 ? pieces++ : 1;
-				// count_tetri(new_str[i]) == 8 ? pieces++ : 1;
 			}
 			else
 				return (1);
@@ -114,7 +112,10 @@ int		ft_valid(char *file)
 		}
 		return (0);
 	}
-	if (pieces > 26)
+	else
 		return (1);
-	return (1);
+	return (pieces > 26 ? 1 : 0);
 }
+
+// count_tetri(new_str[i]) == 6 ? pieces++ : 1;
+// count_tetri(new_str[i]) == 8 ? pieces++ : 1;
