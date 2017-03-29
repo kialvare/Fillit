@@ -52,11 +52,14 @@ char	***store_tetri(char *file)
 		pieces = ft_memalloc(sizeof(char **) * (len + 1));
 		while (i < len)
 		{
-			printf("Is it going in here\n");
 			pieces[i] = ft_strsplitstr(str[i], "\n");
 			i++;
 		}
 		return (pieces);
 	}
-	return (0);
+	else
+	{
+		ft_putendl("error");
+		return (0);
+	}
 }

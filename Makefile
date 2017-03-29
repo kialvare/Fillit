@@ -38,10 +38,10 @@ $(LIB):
 OBJ := $(patsubst %.c,%.o,$(SRC))
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LDFLAGS) $(LDLIBS) -fsanitize=address
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LDFLAGS) $(LDLIBS) -fsanitize=address
 
 clean:
 	$(RM) $(OBJ)

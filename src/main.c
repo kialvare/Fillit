@@ -71,22 +71,19 @@ int		main(int ac, char **av)
 		if (file[0] == '\0')
 		{
 			ft_putendl("error");
-			return (0);
+			return (1);
 		}
 		if ((pieces = store_tetri(file)) == 0)
-		{
-			printf("Probably went through here\n");
 			return (0);
-		}
 		map = start(pieces);
 		print_map(map);
 		free_map(map);
 		free_pieces(pieces, file);
-		return (0);
+		return (1);
 	}
 	else
 	{
 		ft_putendl("usage: ./fillit target_file");
-		return (1);
+		return (0);
 	}
 }

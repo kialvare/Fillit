@@ -40,7 +40,7 @@ void				free_pieces(char ***pieces, char *file);
 int					count_tetri(char *file);
 int					check_count(char *file);
 int					ft_valid(char *file);
-int 				count_newlines(char *file);
+// int 				count_newlines(char *file);
 
 /*
 ** algo3.c
