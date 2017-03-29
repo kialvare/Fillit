@@ -101,8 +101,12 @@ int		ft_valid(char *file)
 		{
 			if (check_count(new_str[i]) == 0)
 			{
-				count_tetri(new_str[i]) == 6 ? pieces++ : 1;
-				count_tetri(new_str[i]) == 8 ? pieces++ : 1;
+				if (count_tetri(new_str[i]) == 6 || count_tetri(new_str[i]) == 8)
+					pieces++;
+				else
+					return (1);
+				// count_tetri(new_str[i]) == 6 ? pieces++ : 1;
+				// count_tetri(new_str[i]) == 8 ? pieces++ : 1;
 			}
 			else
 				return (1);
