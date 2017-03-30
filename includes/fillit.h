@@ -37,7 +37,7 @@ void				free_pieces(char ***pieces, char *file);
 /*
 ** validation.c
 */
-int					count_tetri(char *file);
+int					cnt_tetri(char *file);
 int					check_count(char *file);
 int					ft_valid(char *file);
 // int 				count_newlines(char *file);

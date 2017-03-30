@@ -41,7 +41,7 @@ int		check_count(char *file)
 	return (1);
 }
 
-int		count_tetri(char *file)
+int		cnt_tetri(char *file)
 {
 	int i;
 	int connection;
@@ -101,7 +101,7 @@ int		ft_valid(char *file)
 		{
 			if (check_count(new_str[i]) == 0)
 			{
-				if (count_tetri(new_str[i]) == 6 || count_tetri(new_str[i]) == 8)
+				if (cnt_tetri(new_str[i]) == 6 || cnt_tetri(new_str[i]) == 8)
 					pieces++;
 				else
 					return (1);
@@ -112,9 +112,7 @@ int		ft_valid(char *file)
 		}
 		return (0);
 	}
-	else
-		return (1);
-	return (pieces > 26 ? 1 : 0);
+	return (1);
 }
 
 // count_tetri(new_str[i]) == 6 ? pieces++ : 1;

@@ -55,6 +55,8 @@ char	***store_tetri(char *file)
 			pieces[i] = ft_strsplitstr(str[i], "\n");
 			i++;
 		}
+		if (len > 26)
+			return (0);
 		return (pieces);
 	}
 	else
